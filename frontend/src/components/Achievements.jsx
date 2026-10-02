@@ -1,59 +1,57 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Star, TrendingDown } from 'lucide-react';
+import { Star, Trophy, GraduationCap, Award } from 'lucide-react';
+import { Reveal, SectionHeader, SpotlightCard } from './ui';
 
-const ACHIEVEMENT_ICONS = [Star, TrendingDown];
+const ICONS = { star: Star, trophy: Trophy };
 
-const ACCENT = {
-  orange: { color: '#b45309', bg: '#fffbeb', border: '#fcd34d' },
-  green:  { color: '#059669', bg: '#ecfdf5', border: '#a7f3d0' },
-};
-
-export default function Achievements({ achievements }) {
-  const [ref, visible] = useScrollReveal(0.15);
+/* Recognition + education, shown together as one bento row */
+export default function Achievements({ achievements, education }) {
+  const pct = (parseFloat(education.cgpa) / parseFloat(education.maxCgpa)) * 100;
 
   return (
-    <section ref={ref} className="py-20">
-      <div className="mb-12">
-        <p className="eyebrow">Achievements</p>
-        <h2 className="font-heading" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#111111' }}>
-          Recognition That Matters
-        </h2>
-      </div>
+    <section id="recognition" className="relative py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <SectionHeader
+          index="08"
+          eyebrow="Recognition & education"
+          title={<>Recognised for <span className="text-gradient">impact.</span></>}
+        />
 
-      <div className="grid md:grid-cols-2 gap-5">
-        {achievements.map((a, i) => {
-          const style = ACCENT[a.color] || ACCENT.orange;
-          const Icon  = ACHIEVEMENT_ICONS[i] || Star;
-          return (
-            <div
-              key={i}
-              className="card"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(20px)',
-                transition: `opacity 0.5s ease ${i * 0.13}s, transform 0.5s ease ${i * 0.13}s`,
-              }}
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex items-center justify-center rounded-xl shrink-0"
-                  style={{ width: 46, height: 46, background: style.bg, border: `1px solid ${style.border}` }}
-                >
-                  <Icon size={22} color={style.color} strokeWidth={1.6} />
+        <div className="grid gap-4 md:grid-cols-3">
+          {achievements.map((a, i) => {
+            const Icon = ICONS[a.icon] || Award;
+            return (
+              <Reveal key={a.title} delay={i * 80}>
+                <SpotlightCard color="amber" className="flex h-full flex-col p-6">
+                  <span className="icon-tile h-11 w-11 border-amber-300/25 bg-amber-300/10 text-amber-200"><Icon size={19} /></span>
+                  <h3 className="mt-5 font-display text-xl font-semibold text-fg">{a.title}</h3>
+                  <p className="mt-1 text-xs text-amber-200/80">{a.organization}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-fg-muted">{a.description}</p>
+                </SpotlightCard>
+              </Reveal>
+            );
+          })}
+
+          <Reveal delay={160}>
+            <SpotlightCard color="sky" className="flex h-full flex-col p-6">
+              <span className="icon-tile h-11 w-11 border-sky-300/25 bg-sky-300/10 text-sky-200"><GraduationCap size={19} /></span>
+              <h3 className="mt-5 font-display text-xl font-semibold text-fg">{education.degree}</h3>
+              <p className="mt-1 text-xs text-sky-200/80">{education.institution}</p>
+              <p className="mt-1 text-xs text-fg-dim">{education.location} · {education.period}</p>
+
+              <div className="mt-auto pt-6">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-xs text-fg-dim">CGPA</span>
+                  <span className="font-display text-2xl font-semibold text-fg">
+                    {education.cgpa}<span className="text-sm text-fg-dim"> / {education.maxCgpa}</span>
+                  </span>
                 </div>
-                <div>
-                  <h3 className="font-heading text-xl mb-1" style={{ color: '#111111' }}>{a.title}</h3>
-                  <p className="text-xs font-semibold mb-3" style={{ color: style.color, fontFamily: 'Inter, sans-serif' }}>
-                    {a.organization}
-                  </p>
-                  <p className="text-sm" style={{ color: '#666666', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
-                    {a.description}
-                  </p>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-full rounded-full bg-gradient-to-r from-sky-400 to-emerald-300" style={{ width: `${pct}%` }} />
                 </div>
               </div>
-            </div>
-          );
-        })}
+            </SpotlightCard>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

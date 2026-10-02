@@ -1,230 +1,172 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Download, Mail, Award } from 'lucide-react';
+import { LiveDot, GithubIcon, LinkedinIcon, SOCIALS, asset, prefersReducedMotion } from './ui';
 
-const ROLES = ['Cloud & DevOps Engineer', 'SRE Practitioner', 'Platform Engineer', 'AI/ML Integrations'];
-
-function RoleRotator() {
-  const [index, setIndex]     = useState(0);
-  const [visible, setVisible] = useState(true);
+/* Types each role out, pauses, deletes it, moves to the next */
+function Typewriter({ words }) {
+  const [text, setText] = useState(prefersReducedMotion() ? words[0] : '');
+  const [i, setI] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => { setIndex(i => (i + 1) % ROLES.length); setVisible(true); }, 350);
-    }, 3000);
-    return () => clearInterval(t);
-  }, []);
+    if (prefersReducedMotion()) return;
+    const word = words[i % words.length];
+    let delay = deleting ? 35 : 65;
+    if (!deleting && text === word) delay = 1800;
+    if (deleting && text === '') delay = 300;
+
+    const t = setTimeout(() => {
+      if (!deleting && text === word) setDeleting(true);
+      else if (deleting && text === '') { setDeleting(false); setI(n => n + 1); }
+      else setText(word.slice(0, text.length + (deleting ? -1 : 1)));
+    }, delay);
+    return () => clearTimeout(t);
+  }, [text, deleting, i, words]);
 
   return (
-    <span
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(-6px)',
-        transition: 'opacity 0.35s ease, transform 0.35s ease',
-        display: 'inline-block',
-        color: '#888888',
-      }}
-    >
-      {ROLES[index]}
+    <span className="font-mono text-sm text-emerald-300 md:text-base">
+      <span className="text-fg-dim">~/arshad $ </span>
+      {text}
+      <span className="ml-0.5 inline-block h-[1.1em] w-[0.55em] translate-y-[3px] animate-blink bg-emerald-300/80" />
     </span>
   );
 }
 
-const SOCIAL = [
-  { href: 'mailto:arshali471@gmail.com',                          label: '✉',   title: 'Email' },
-  { href: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2', label: 'in',  title: 'LinkedIn', target: '_blank' },
-  { href: 'https://github.com/arshali471',                        label: '{ }', title: 'GitHub',   target: '_blank' },
-  { href: 'tel:+917870831211',                                    label: '☎',   title: 'Phone' },
+const TERMINAL_ROWS = [
+  { name: 'serverpulse', host: 'serverpulse.in' },
+  { name: 'cloudledger', host: 'cloudledger.*' },
+  { name: 'cloudwright', host: 'cloudwright.*' },
+  { name: 'terminal-agent', host: 'ai-agent.*' },
 ];
 
-export default function TerminalHero({ profile }) {
+function ProductsTerminal() {
+  return (
+    <div className="glass overflow-hidden rounded-2xl !bg-night-900/95 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)]">
+      <div className="flex items-center gap-1.5 border-b hairline px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+        <span className="ml-3 font-mono text-[11px] text-fg-dim">zsh — prod</span>
+      </div>
+      <div className="space-y-1 px-4 py-3 font-mono text-[11.5px] leading-relaxed">
+        <p className="text-fg-muted"><span className="text-emerald-300">$</span> kubectl get products -A</p>
+        <p className="text-fg-dim"><span className="inline-block w-[7.2rem]">NAME</span><span className="inline-block w-[8rem]">HOST</span>STATUS</p>
+        {TERMINAL_ROWS.map((r, idx) => (
+          <p
+            key={r.name}
+            className="flex opacity-0 animate-fadeUp text-fg"
+            style={{ animationDelay: `${0.9 + idx * 0.45}s` }}
+          >
+            <span className="w-[7.2rem] shrink-0">{r.name}</span>
+            <span className="w-[8rem] shrink-0 truncate text-fg-muted">{r.host}</span>
+            <span className="inline-flex items-center gap-1.5 text-emerald-300"><LiveDot size={6} /> Running</span>
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function TerminalHero({ profile, products }) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => { setTimeout(() => setMounted(true), 80); }, []);
+  useEffect(() => { const t = setTimeout(() => setMounted(true), 60); return () => clearTimeout(t); }, []);
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex items-center pt-14"
-      style={{ background: 'linear-gradient(160deg, #f9f5f0 0%, #fdfcfb 60%, #f0e9df 100%)' }}
-    >
-      <div className="max-w-6xl mx-auto px-5 md:px-8 w-full py-4 md:py-6">
-        <div
-          className="grid md:grid-cols-2 gap-10 lg:gap-16 items-end"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'opacity 0.8s ease, transform 0.8s ease',
-          }}
-        >
-          {/* ── LEFT — Content ── */}
-          <div className="order-2 md:order-1 space-y-6 pb-4">
-            <p className="eyebrow">Cloud & DevOps Engineer · Delhi, India</p>
+    <section id="top" className="relative overflow-hidden pb-24 pt-32 md:pb-32 md:pt-40">
+      {/* Backdrop */}
+      <div className="grid-bg pointer-events-none absolute inset-0" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[-10%] top-40 h-[380px] w-[380px] rounded-full bg-emerald-400/10 blur-[110px]" />
+      <div className="pointer-events-none absolute left-[-10%] top-72 h-[320px] w-[320px] rounded-full bg-sky-500/10 blur-[110px]" />
 
-            <div>
-              <h1
-                className="font-heading"
-                style={{
-                  fontSize: 'clamp(2.4rem, 5vw, 4rem)',
-                  lineHeight: 1.08,
-                  letterSpacing: '-0.02em',
-                  color: '#111111',
-                }}
-              >
-                {profile.name}
-              </h1>
-              <p className="mt-2" style={{ fontSize: '1.1rem', fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
-                <RoleRotator />
-              </p>
-            </div>
+      <div
+        className={`relative mx-auto grid max-w-6xl items-center gap-16 px-5 transition-all duration-1000 md:px-8 lg:grid-cols-[1.15fr_0.85fr] ${
+          mounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+        }`}
+      >
+        {/* ── Copy ── */}
+        <div>
+          <a
+            href="#certifications"
+            className="group inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-amber-300/[0.07] py-1 pl-1 pr-3 text-xs text-amber-100 transition-colors hover:border-amber-300/50"
+          >
+            <span className="rounded-full bg-amber-300 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-night-950">New</span>
+            AWS Certified Solutions Architect – Professional
+            <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
+          </a>
 
-            <p
-              style={{
-                color: '#666666',
-                lineHeight: 1.8,
-                fontSize: '1rem',
-                fontFamily: 'Inter, sans-serif',
-                maxWidth: '42ch',
-              }}
-            >
-              {profile.summary}
-            </p>
+          <h1 className="mt-7 font-display text-[clamp(2.75rem,7vw,5.25rem)] font-semibold leading-[0.98] tracking-[-0.035em]">
+            <span className="text-fg">{profile.name.split(' ').slice(0, -2).join(' ')} </span>
+            <span className="text-gradient">{profile.name.split(' ').slice(-2).join(' ')}</span>
+          </h1>
 
-            <div className="flex flex-wrap gap-3 pt-1">
-              <a href={`mailto:${profile.contact.email}`} className="btn-primary">
-                Get in Touch
-              </a>
-              <a href="#projects" className="btn-outline">
-                View Projects
-              </a>
-              <a
-                href="/resume.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-              >
-                ↓ Resume
-              </a>
-              <a
-                href="/cover-letter.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-              >
-                ↓ Cover Letter
-              </a>
-            </div>
+          <div className="mt-5 h-7">
+            <Typewriter words={profile.roles} />
+          </div>
 
-            <div className="flex items-center gap-2">
-              {SOCIAL.map(s => (
-                <a
-                  key={s.title}
-                  href={s.href}
-                  target={s.target}
-                  rel={s.target ? 'noopener noreferrer' : undefined}
-                  title={s.title}
-                  className="icon-btn"
-                  style={{
-                    fontSize: s.label === 'in' || s.label === '{ }' ? '0.7rem' : '0.95rem',
-                    fontWeight: 700,
-                  }}
-                >
-                  {s.label}
-                </a>
-              ))}
-              <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: '#aaaaaa', fontFamily: 'Inter, sans-serif' }}>
-                · Open to opportunities
+          <p className="mt-6 max-w-xl font-display text-xl leading-snug text-fg md:text-2xl">
+            {profile.headline}
+          </p>
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg-muted">
+            {profile.summary}
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#products" className="btn-primary">
+              Explore my products <ArrowRight size={16} />
+            </a>
+            <a href={asset('resume.html')} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+              <Download size={15} /> Resume
+            </a>
+            <a href={SOCIALS.email} className="btn-ghost">
+              <Mail size={15} /> Get in touch
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-fg-muted">
+            <span className="inline-flex items-center gap-2"><LiveDot /> Open to DevOps · SRE · Platform · Solutions Architect roles</span>
+            <span className="flex items-center gap-1">
+              <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-lg p-2 hover:bg-white/5 hover:text-fg"><GithubIcon size={17} /></a>
+              <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-lg p-2 hover:bg-white/5 hover:text-fg"><LinkedinIcon size={17} /></a>
+            </span>
+          </div>
+        </div>
+
+        {/* ── Portrait + floating cards ── */}
+        <div className="relative mx-auto w-full max-w-[420px]">
+          <div className="absolute -inset-px rounded-[28px] bg-gradient-to-br from-indigo-400/50 via-sky-400/20 to-emerald-400/40" />
+          <div className="relative overflow-hidden rounded-[27px] bg-night-850">
+            <img
+              src={asset('avatar.png')}
+              alt={profile.name}
+              className="aspect-[4/5] w-full object-cover object-top"
+              onError={e => { e.currentTarget.style.display = 'none'; }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/10 to-transparent" />
+          </div>
+
+          {/* Certification badge */}
+          <div className="glass absolute -left-4 top-6 animate-floaty rounded-2xl !bg-night-900/90 px-3.5 py-3 shadow-2xl sm:-left-10">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-300 to-orange-500 text-night-950">
+                <Award size={20} strokeWidth={2.2} />
               </span>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {['AWS', 'Kubernetes', 'Terraform', 'Python', 'Docker', 'CI/CD', 'Bedrock'].map(t => (
-                <span key={t} className="tag">{t}</span>
-              ))}
+              <div className="leading-tight">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-amber-200/80">AWS Certified</p>
+                <p className="text-sm font-semibold text-fg">Solutions Architect</p>
+                <p className="text-xs text-fg-muted">Professional · 2026</p>
+              </div>
             </div>
           </div>
 
-          {/* ── RIGHT — Photo ── */}
-          <div className="order-1 md:order-2 relative" style={{ paddingTop: '2rem', paddingLeft: '1.5rem' }}>
-            {/* Dark stat badge — top left, outside the photo */}
-            <div
-              className="absolute top-0 left-0 z-10 rounded-2xl px-4 py-3"
-              style={{
-                background: '#111111',
-                fontFamily: 'Inter, sans-serif',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
-              }}
-            >
-              <p className="text-xl font-bold leading-none text-white">20%</p>
-              <p className="text-xs mt-0.5 whitespace-nowrap" style={{ color: '#888888' }}>Cost Saved</p>
-            </div>
+          {/* Years badge */}
+          <div className="glass absolute -right-3 top-1/2 rounded-2xl !bg-night-900/90 px-4 py-3 text-center shadow-2xl sm:-right-8" style={{ animation: 'floaty 7s ease-in-out 1s infinite' }}>
+            <p className="font-display text-3xl font-semibold text-fg">{products?.length ?? 3}</p>
+            <p className="text-[11px] leading-tight text-fg-muted">live<br />products</p>
+          </div>
 
-            {/* Main photo */}
-            <div
-              className="overflow-hidden rounded-2xl w-full"
-              style={{
-                height: 'clamp(400px, 55vw, 580px)',
-                boxShadow: '0 20px 70px rgba(0,0,0,0.12)',
-                border: '1px solid #ebe2d8',
-              }}
-            >
-              <img
-                src={import.meta.env.BASE_URL + 'avatar.png'}
-                alt={profile.name}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'top center',
-                }}
-                onError={e => {
-                  e.currentTarget.parentElement.style.background = 'linear-gradient(135deg,#f0e9df,#ebe2d8)';
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-
-              {/* Overlay label — bottom left inside the image */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 16,
-                  left: 16,
-                  background: 'rgba(0,0,0,0.40)',
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '9999px',
-                  padding: '0.3rem 1rem',
-                }}
-              >
-                <p style={{
-                  fontSize: '0.65rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.85)',
-                  fontFamily: 'Inter, sans-serif',
-                }}>
-                  Cloud & DevOps · Delhi, India
-                </p>
-              </div>
-            </div>
-
-            {/* White stat card — bottom right outside photo */}
-            <div
-              className="absolute z-10 rounded-2xl px-5 py-4"
-              style={{
-                bottom: '-1.5rem',
-                right: '-0.5rem',
-                background: '#ffffff',
-                border: '1px solid #e5e5e5',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
-                fontFamily: 'Inter, sans-serif',
-              }}
-            >
-              <p className="font-heading font-bold leading-none" style={{ fontSize: '2rem', color: '#111111' }}>3+</p>
-              <p className="text-sm mt-0.5 whitespace-nowrap" style={{ color: '#888888' }}>Years Experience</p>
-            </div>
+          <div className="relative -mt-20 mx-3 sm:absolute sm:-bottom-12 sm:-left-12 sm:mx-0 sm:mt-0 sm:w-[384px]">
+            <ProductsTerminal />
           </div>
         </div>
       </div>

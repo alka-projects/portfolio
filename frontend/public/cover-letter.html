@@ -181,11 +181,53 @@
       white-space: nowrap;
     }
 
+    /* ── At-a-glance strip ── */
+    .glance {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+      margin: 0 0 1.6rem;
+    }
+    .glance div {
+      background: #f9f5f0;
+      border: 1px solid #ebe2d8;
+      border-radius: 0.6rem;
+      padding: 0.55rem 0.7rem;
+      text-align: center;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .glance strong {
+      display: block;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: #111111;
+      line-height: 1.2;
+    }
+    .glance span { font-size: 0.68rem; color: #777777; text-transform: uppercase; letter-spacing: 0.08em; }
+    .product-link { color: #059669; font-weight: 600; text-decoration: none; }
+    .product-link:hover { text-decoration: underline; }
+
     /* ── Print ── */
+    @media (max-width: 640px) {
+      .letter-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem 1.5rem; }
+      .letter-header-right { text-align: left; }
+      .letter-body { padding: 2rem 1.5rem; }
+      .glance { grid-template-columns: repeat(2, 1fr); }
+    }
     @media print {
-      .action-bar { display: none !important; }
+      .action-bar, .page-spacer { display: none !important; }
       body { background: #ffffff; }
-      .letter { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      .letter { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; zoom: 0.9; }
+      .letter-header { padding: 1.6rem 2.4rem; }
+      .letter-body { padding: 1.8rem 2.4rem 1.6rem; }
+      .letter-date, .letter-to, .subject { margin-bottom: 1.1rem; }
+      .letter-para { font-size: 0.86rem; line-height: 1.62; margin-bottom: 0.85rem; }
+      .glance { margin-bottom: 1rem; }
+      .letter-closing { margin-top: 1.4rem; }
+      .closing-line { margin-bottom: 0.9rem; }
+      .signature-title { margin-bottom: 0.5rem; }
+      .signature-contacts { flex-direction: row; flex-wrap: wrap; gap: 0.2rem 1.1rem; }
       .letter-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
     @page { margin: 0.8cm; size: A4; }
@@ -211,7 +253,7 @@
     <div class="letter-header">
       <div class="letter-header-left">
         <h1>Md Arshad Ali</h1>
-        <p class="title">Cloud &amp; DevOps Engineer</p>
+        <p class="title">Cloud &amp; DevOps Engineer · AWS Solutions Architect – Professional</p>
       </div>
       <div class="letter-header-right">
         <p>
@@ -226,56 +268,69 @@
     <!-- Body -->
     <div class="letter-body">
 
-      <p class="letter-date">May 2025</p>
+      <p class="letter-date">October 2026</p>
 
       <div class="letter-to">
         <p><strong>Dear Hiring Manager,</strong></p>
       </div>
 
       <div class="subject">
-        <p><strong>Re: Cloud &amp; DevOps Engineering / SRE / Platform Engineering Opportunities</strong></p>
+        <p><strong>Re: Cloud &amp; DevOps Engineer · SRE · Platform Engineer · Solutions Architect</strong></p>
       </div>
 
       <p class="letter-para">
-        I am writing to express my strong interest in Cloud &amp; DevOps Engineering, Site Reliability Engineering, or Platform Engineering roles at your organisation. With <strong>3+ years of hands-on experience</strong> building and scaling enterprise AWS infrastructure at Tata Consultancy Services, I have developed a deep understanding of what it takes to operate distributed systems reliably, efficiently, and securely at scale.
+        I am a Cloud &amp; DevOps Engineer at Tata Consultancy Services and a newly certified <strong>AWS Solutions Architect – Professional</strong>. Day to day, I run production AWS at real scale: <strong>20+ AWS accounts and 2,000+ servers</strong> for TCS's client <strong>IFF (International Flavors &amp; Fragrances)</strong>. I am applying for Cloud &amp; DevOps, SRE, Platform Engineering or Solutions Architect roles where that experience can make your infrastructure faster, cheaper and more reliable.
+      </p>
+
+      <div class="glance">
+        <div><strong>20+</strong><span>AWS accounts</span></div>
+        <div><strong>2,000+</strong><span>Servers managed</span></div>
+        <div><strong>4</strong><span>Live products</span></div>
+        <div><strong>5</strong><span>Certifications</span></div>
+      </div>
+
+      <p class="letter-para">
+        On the IFF account I own server deployment and day-to-day operations across every environment — provisioning, configuration, access, monitoring and troubleshooting. At that scale every manual step multiplies, so I automate by default. At TCS I built an AWS management platform that cut manual operations effort by <span class="pill">80%</span>, reworked CI/CD pipelines for <span class="pill">60% faster deployments</span>, and led a cost optimisation that saved <span class="pill">20% of monthly AWS spend</span>, recognised at division level. I have also held a 100% security-compliance score with AWS Config and GuardDuty and halved incident response time with CloudWatch and Grafana.
       </p>
 
       <p class="letter-para">
-        At TCS, I have driven outcomes that go well beyond the technical: I architected an AWS Cloud Management Platform that cut manual operations effort by <span class="pill">80%</span>, optimised CI/CD pipelines to deliver a <span class="pill">60% improvement in deployment speed</span>, and led a cost optimisation initiative that saved <span class="pill">20% of monthly AWS spend</span> — recognised at division level. These were not isolated wins; they were the result of systematic thinking about infrastructure, automation, and reliability as first-class engineering concerns.
+        Outside work I design, build and run four live products on serverpulse.in:
+        <a class="product-link" href="https://serverpulse.in" target="_blank">ServerPulse</a> (real-time server monitoring with a private AI assistant),
+        <a class="product-link" href="https://cloudledger.serverpulse.in" target="_blank">CloudLedger</a> (multi-cloud FinOps with a Claude-powered cost copilot),
+        <a class="product-link" href="https://cloudwright.serverpulse.in" target="_blank">Cloudwright</a> (plain English to reviewed, guard-railed Terraform) and
+        <a class="product-link" href="https://ai-agent.serverpulse.in" target="_blank">Terminal Agent</a> (an AI agent platform that turns requests into risk-rated shell commands and runs only what you approve).
+        Owning them end to end — architecture, code, deployment and on-call — means I weigh reliability, cost and security the way a product owner does, not only an operator.
       </p>
 
       <p class="letter-para">
-        I have also been at the forefront of integrating AI into DevOps workflows. Using <strong>AWS Bedrock and the Claude API</strong>, I built an AI Cost Intelligence system that found an additional 35% in savings. I deployed an LLM-powered incident response bot (LangChain + PagerDuty + Slack) that reduced Mean Time to Resolution by <strong>70%</strong>. And I built a RAG knowledge base over our infrastructure runbooks that cut operational queries by <strong>80%</strong>. I believe the next frontier for DevOps engineers is not just running systems — it's making systems that reason.
+        AI is now part of how I run infrastructure. With <strong>AWS Bedrock and the Claude API</strong> I have built cost intelligence that found a further <strong>35%</strong> in savings, an LLM incident-response bot that cut mean time to resolution by <strong>70%</strong>, and a RAG knowledge base over our runbooks that reduced operational queries by <strong>80%</strong>.
       </p>
 
       <p class="letter-para">
-        Beyond metrics, I hold <strong>four industry certifications</strong> (AWS Solutions Architect – Associate, AWS AI Practitioner, HashiCorp Terraform Associate, AWS Cloud Practitioner), have built a live production product (<a href="https://serverpulse.in" target="_blank" style="color:#059669;font-weight:600;">ServerPulse</a> — real-time server analytics SaaS), and I am continuously learning. I bring the mindset of an engineer who treats reliability, security, and efficiency as non-negotiables — not afterthoughts.
+        I am <strong>open to roles anywhere in India or abroad</strong>, including fully remote. I would welcome a 30-minute conversation about your platform and where I could help. My resume and live product links are at <a class="product-link" href="https://arshali471.github.io/portfolio/" target="_blank">arshali471.github.io/portfolio/</a>.
       </p>
 
       <p class="letter-para">
-        I am <strong>open to opportunities anywhere in India and internationally</strong>, including fully remote roles. I would welcome the chance to discuss how my background aligns with your team's needs. I am available for a call at your earliest convenience.
-      </p>
-
-      <p class="letter-para">
-        Thank you for your time and consideration. I look forward to the possibility of contributing to your organisation.
+        Thank you for your time and consideration.
       </p>
 
       <div class="letter-closing">
         <p class="closing-line">Sincerely,</p>
         <p class="signature-name">Md Arshad Ali</p>
-        <p class="signature-title">Cloud &amp; DevOps Engineer</p>
+        <p class="signature-title">Cloud &amp; DevOps Engineer · AWS Solutions Architect – Professional</p>
         <div class="signature-contacts">
           <a href="mailto:arshali471@gmail.com">arshali471@gmail.com</a>
           <a href="tel:+917870831211">+91 78708 31211</a>
           <a href="https://linkedin.com/in/md-arshad-ali-06279a1b2" target="_blank">linkedin.com/in/md-arshad-ali-06279a1b2</a>
           <a href="https://serverpulse.in" target="_blank">serverpulse.in</a>
+          <a href="https://arshali471.github.io/portfolio/" target="_blank">arshali471.github.io/portfolio/</a>
         </div>
       </div>
 
     </div>
   </div>
 
-  <div style="height:2rem"></div>
+  <div class="page-spacer" style="height:2rem"></div>
 
 </body>
 </html>

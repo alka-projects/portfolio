@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 import { LogoFull } from './Logo';
+import { SOCIALS } from './ui';
 
 const NAV_LINKS = [
-  { href: '#about',      label: 'About' },
-  { href: '#skills',     label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects',   label: 'Projects' },
-  { href: '#ai',         label: 'AI Work' },
-  { href: '#journey',    label: 'Story' },
-  { href: '#contact',    label: 'Contact' },
+  { href: '#products',       label: 'Products' },
+  { href: '#certifications', label: 'Certs' },
+  { href: '#experience',     label: 'Experience' },
+  { href: '#skills',         label: 'Skills' },
+  { href: '#projects',       label: 'Projects' },
+  { href: '#journey',        label: 'Story' },
+  { href: '#contact',        label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -17,97 +19,81 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    const ids = NAV_LINKS.map(l => l.href.slice(1));
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
-      { threshold: 0.3 }
+      { rootMargin: '-45% 0px -50% 0px' }
     );
-    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+    NAV_LINKS.forEach(l => {
+      const el = document.getElementById(l.href.slice(1));
+      if (el) observer.observe(el);
+    });
     return () => observer.disconnect();
   }, []);
 
   return (
-    <nav
-      className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
-      style={{
-        background: scrolled ? 'rgba(249,245,240,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid #e5e5e5' : '1px solid transparent',
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#about" style={{ textDecoration: 'none' }}>
-          <LogoFull size={34} />
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6">
+      <nav
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 ${
+          scrolled || menuOpen ? 'glass shadow-[0_10px_40px_-12px_rgba(0,0,0,0.8)]' : 'border border-transparent'
+        }`}
+      >
+        <a href="#top" aria-label="Back to top">
+          <LogoFull size={32} />
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-0.5">
-          {NAV_LINKS.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`nav-link ${active === link.href.slice(1) ? 'active' : ''}`}
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="hidden items-center gap-1 lg:flex">
+          {NAV_LINKS.map(link => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors ${
+                  isActive ? 'bg-white/[0.07] text-fg' : 'text-fg-muted hover:text-fg'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <a
-            href="https://www.linkedin.com/in/md-arshad-ali-06279a1b2"
-            target="_blank" rel="noopener noreferrer"
-            className="nav-link"
-          >
-            LinkedIn
-          </a>
-          <a href="mailto:arshali471@gmail.com" className="btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.875rem' }}>
-            Hire Me
-          </a>
+        <div className="hidden items-center gap-2 lg:flex">
+          <a href={SOCIALS.email} className="btn-primary !px-4 !py-2">Hire me</a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-ink-50 transition-colors"
-          onClick={() => setMenuOpen(p => !p)}
+          className="rounded-lg p-2 text-fg-muted hover:bg-white/5 hover:text-fg lg:hidden"
+          onClick={() => setMenuOpen(o => !o)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
-          <div style={{ width: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <div style={{ height: 1.5, background: '#111', borderRadius: 2, transition: 'all 0.2s', transform: menuOpen ? 'rotate(45deg) translateY(5.5px)' : 'none' }} />
-            <div style={{ height: 1.5, background: '#111', borderRadius: 2, transition: 'all 0.2s', opacity: menuOpen ? 0 : 1 }} />
-            <div style={{ height: 1.5, background: '#111', borderRadius: 2, transition: 'all 0.2s', transform: menuOpen ? 'rotate(-45deg) translateY(-5.5px)' : 'none' }} />
-          </div>
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-cream-50 border-t border-ink-100 px-5 py-4 space-y-1">
+        <div className="glass mx-auto mt-2 max-w-6xl rounded-2xl p-2 lg:hidden">
           {NAV_LINKS.map(link => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-2.5 text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 rounded-lg transition-colors"
+              className="block rounded-xl px-4 py-3 text-sm text-fg-muted hover:bg-white/5 hover:text-fg"
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-2 border-t border-ink-100 mt-2">
-            <a href="mailto:arshali471@gmail.com" className="btn-primary w-full justify-center" style={{ padding: '0.625rem 1.5rem' }}>
-              Hire Me
-            </a>
-          </div>
+          <a href={SOCIALS.email} className="btn-primary mt-2 w-full">Hire me</a>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

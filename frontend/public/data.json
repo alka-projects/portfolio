@@ -2,8 +2,14 @@
   "profile": {
     "name": "Md Arshad Ali",
     "role": "Cloud & DevOps Engineer",
-    "roles": ["Cloud & DevOps Engineer", "SRE Practitioner", "AI/ML Integrations", "Platform Engineer"],
-    "tagline": "3+ Years | AWS | Kubernetes | Terraform | Python | GenAI",
+    "roles": [
+      "Cloud & DevOps Engineer",
+      "AWS Solutions Architect – Professional",
+      "Platform Engineer",
+      "SaaS Product Builder",
+      "AI Infrastructure"
+    ],
+    "tagline": "4+ Years | AWS SA Professional | 20+ AWS Accounts | 2,000+ Servers | Kubernetes | Terraform | GenAI",
     "location": "Delhi, India",
     "contact": {
       "email": "arshali471@gmail.com",
@@ -12,54 +18,322 @@
       "github": "github.com/arshali471"
     },
     "githubUsername": "arshali471",
-    "summary": "Cloud & DevOps Engineer with 3+ years building scalable, AI-augmented infrastructure at scale. Expert in AWS, Kubernetes, Terraform, and GenAI integrations. Proven record: 80% reduction in manual ops, 60% faster deployments, 20% cost savings. Passionate about SRE, platform engineering, and the intersection of DevOps and Artificial Intelligence."
+    "headline": "I build cloud platforms at enterprise scale — and ship my own SaaS products.",
+    "summary": "AWS Certified Solutions Architect – Professional and Cloud & DevOps Engineer at TCS with 4+ years in production AWS. I manage 20+ AWS accounts and 2,000+ servers for TCS's client IFF, and outside work I design, build and run four live products on serverpulse.in — observability, FinOps, AI-generated Terraform and an AI terminal agent. Proven record: 80% less manual ops, 60% faster deployments, 20% cloud cost savings."
   },
   "metrics": [
-    { "value": 3, "label": "Years Experience", "suffix": "+", "icon": "📅" },
-    { "value": 80, "label": "Manual Effort Reduced", "suffix": "%", "icon": "⚡" },
-    { "value": 60, "label": "Faster Deployments", "suffix": "%", "icon": "🚀" },
-    { "value": 20, "label": "Cloud Cost Saved", "suffix": "%", "icon": "💰" }
+    {
+      "value": 4,
+      "label": "Years in Cloud & DevOps",
+      "suffix": "+"
+    },
+    {
+      "value": 20,
+      "label": "AWS accounts managed",
+      "suffix": "+"
+    },
+    {
+      "value": 2000,
+      "label": "Servers on AWS",
+      "suffix": "+"
+    },
+    {
+      "value": 4,
+      "label": "Live products",
+      "suffix": ""
+    },
+    {
+      "value": 5,
+      "label": "Industry certifications",
+      "suffix": ""
+    },
+    {
+      "value": 80,
+      "label": "Manual ops effort cut",
+      "suffix": "%"
+    },
+    {
+      "value": 60,
+      "label": "Faster deployments",
+      "suffix": "%"
+    },
+    {
+      "value": 20,
+      "label": "Cloud spend saved",
+      "suffix": "%"
+    }
+  ],
+  "products": [
+    {
+      "id": "serverpulse",
+      "name": "ServerPulse",
+      "tagline": "Real-time infra monitoring with AI",
+      "category": "Observability SaaS",
+      "url": "https://serverpulse.in",
+      "domain": "serverpulse.in",
+      "accent": "indigo",
+      "description": "A multi-tenant server monitoring platform I designed, built and run end-to-end. One lightweight agent per server streams metrics every 10 seconds into live dashboards, with smart alerting, security scanning and a private AI assistant that answers questions about your fleet in plain English.",
+      "features": [
+        "Live CPU, memory, disk, network and GPU metrics pushed over WebSockets every 10s",
+        "Smart alert policies with consecutive-breach detection, cooldowns, email / Slack / webhook",
+        "AI infra assistant on a local Ollama LLM — metrics and logs never leave your servers",
+        "Security scanning: vulnerabilities, open ports, malware, SSH and sudo events",
+        "HTTP, service-port, SSL-expiry, PM2 and Docker monitoring with log forwarding",
+        "Teams and RBAC, audit log, patching, maintenance windows and an Expo mobile app"
+      ],
+      "stack": [
+        "React 18",
+        "Vite",
+        "Node.js",
+        "Express",
+        "MongoDB time-series",
+        "Redis pub/sub",
+        "Socket.IO",
+        "Ollama",
+        "Docker",
+        "Nginx",
+        "Expo"
+      ],
+      "stats": [
+        {
+          "value": "10s",
+          "label": "metric resolution"
+        },
+        {
+          "value": "<0.5%",
+          "label": "agent CPU overhead"
+        },
+        {
+          "value": "15+",
+          "label": "product modules"
+        }
+      ]
+    },
+    {
+      "id": "cloudledger",
+      "name": "CloudLedger",
+      "tagline": "Multi-cloud FinOps platform",
+      "category": "FinOps SaaS",
+      "url": "https://cloudledger.serverpulse.in",
+      "domain": "cloudledger.serverpulse.in",
+      "accent": "emerald",
+      "description": "Unify, allocate, forecast and optimize cloud spend across AWS, GCP and Azure. A TypeScript monorepo where every surface (explorer, budgets, anomalies, forecasting, reports) reads through one cost-query engine, with a Claude-powered Cost Copilot on top.",
+      "features": [
+        "AI Cost Copilot (Claude): ask about spend in plain English and get anomalies explained",
+        "Anomaly detection against a 14-day baseline and 30-day forecasting with weekday seasonality",
+        "Virtual tags and shared-cost allocation: even, proportional or weighted showback",
+        "Automated optimization actions with approval flow, execution log and one-click rollback",
+        "Kubernetes idle cost, RI / Savings Plan coverage, GreenOps carbon and SaaS spend tracking",
+        "Pluggable connectors: AWS Cost Explorer, GCP BigQuery billing, Azure Cost Management"
+      ],
+      "stack": [
+        "Next.js",
+        "React 19",
+        "TypeScript",
+        "Express",
+        "MongoDB",
+        "Zod",
+        "TanStack Query",
+        "Recharts",
+        "Claude API",
+        "node-cron",
+        "Docker",
+        "Caddy"
+      ],
+      "stats": [
+        {
+          "value": "3",
+          "label": "clouds unified"
+        },
+        {
+          "value": "14",
+          "label": "FinOps modules"
+        },
+        {
+          "value": "4",
+          "label": "RBAC roles"
+        }
+      ]
+    },
+    {
+      "id": "cloudwright",
+      "name": "Cloudwright",
+      "tagline": "Describe it. Diagram it. Ship it.",
+      "category": "AI Infrastructure Platform",
+      "url": "https://cloudwright.serverpulse.in",
+      "domain": "cloudwright.serverpulse.in",
+      "accent": "sky",
+      "description": "An AI co-pilot for AWS that turns plain-English requirements into reviewed architecture diagrams and production-ready Terraform. The AI never writes raw HCL: it proposes a typed spec, and a deterministic generator composes vetted, secure-by-default modules.",
+      "features": [
+        "Chat to architecture: AI proposes a typed InfraSpec, rendered as a diagram and a Terraform module tree",
+        "Secure-by-default modules: VPC, ALB + EC2, RDS, S3, Redis with encryption, private subnets, IMDSv2",
+        "Sandboxed terraform plan / apply in Docker with live WebSocket log streaming",
+        "User-defined environments with promotion and isolated state (S3 + DynamoDB lock)",
+        "Guardrails: two-person prod approval, per-env spend caps, cost estimates, append-only audit",
+        "Multi-tenant companies and RBAC, pluggable AI engine: Claude, AWS Bedrock or offline"
+      ],
+      "stack": [
+        "React 18",
+        "Vite",
+        "MUI",
+        "Monaco",
+        "Express",
+        "TypeScript",
+        "MongoDB",
+        "WebSocket",
+        "Terraform",
+        "AWS Bedrock",
+        "Claude",
+        "Docker",
+        "Jenkins"
+      ],
+      "stats": [
+        {
+          "value": "5",
+          "label": "vetted TF modules"
+        },
+        {
+          "value": "2×",
+          "label": "approval for prod"
+        },
+        {
+          "value": "AES-256",
+          "label": "credential encryption"
+        }
+      ]
+    },
+    {
+      "id": "terminalagent",
+      "name": "Terminal Agent",
+      "tagline": "Tell your terminal what you want. Approve what it runs.",
+      "category": "AI Agent Platform",
+      "url": "https://ai-agent.serverpulse.in",
+      "domain": "ai-agent.serverpulse.in",
+      "accent": "violet",
+      "description": "An agentic AI platform for the command line. Describe a task in plain English and the agent plans shell commands, rates the risk of each one, runs only what you approve, reads the output and keeps going until the job is done. A team portal runs Claude on the server, so engineers just install one tool and sign in.",
+      "features": [
+        "Agentic loop: plan a command, run it, read the output, self-correct on failure — until the task is done",
+        "Two independent safety layers: a local parser and Claude rate every command; the stricter rating wins",
+        "Read-only runs instantly, changes ask first, dangerous commands always ask, catastrophic ones never run",
+        "Runs in a real PTY in your own shell — colours, prompts and Ctrl-C work; cd and export apply to your session",
+        "Secrets masked before anything reaches the model; ai fix diagnoses failures, ai explain breaks commands down",
+        "Team portal: device-code sign-in, per-person token metering, monthly limits, pause / stop users and an audit log"
+      ],
+      "stack": [
+        "Python",
+        "Click",
+        "Rich",
+        "prompt_toolkit",
+        "Claude Code CLI",
+        "FastAPI",
+        "Uvicorn",
+        "Jinja2",
+        "SQLite",
+        "Docker",
+        "Caddy"
+      ],
+      "stats": [
+        {
+          "value": "2",
+          "label": "independent safety layers"
+        },
+        {
+          "value": "4",
+          "label": "risk levels per command"
+        },
+        {
+          "value": "1-line",
+          "label": "install on macOS / Linux"
+        }
+      ]
+    }
   ],
   "skills": {
     "Cloud Platforms": {
-      "items": ["AWS (EC2, S3, RDS, Lambda, API Gateway, Bedrock)", "Microsoft Azure (Basics)"],
-      "icon": "☁️",
-      "color": "orange"
+      "items": [
+        "AWS (EC2, S3, RDS, Lambda, API Gateway, EKS, Bedrock)",
+        "Multi-account architecture",
+        "Microsoft Azure (Basics)",
+        "GCP billing / BigQuery"
+      ],
+      "icon": "cloud",
+      "color": "amber"
     },
     "Infrastructure as Code": {
-      "items": ["Terraform", "AWS CloudFormation", "Ansible", "Pulumi (Basics)"],
-      "icon": "🏗️",
-      "color": "purple"
+      "items": [
+        "Terraform",
+        "AWS CloudFormation",
+        "Ansible",
+        "Pulumi (Basics)"
+      ],
+      "icon": "layers",
+      "color": "violet"
     },
     "Containers & Orchestration": {
-      "items": ["Docker", "Kubernetes (EKS, self-managed)", "Helm", "ArgoCD"],
-      "icon": "⚙️",
-      "color": "blue"
+      "items": [
+        "Docker",
+        "Kubernetes (EKS, self-managed)",
+        "Helm",
+        "ArgoCD"
+      ],
+      "icon": "boxes",
+      "color": "sky"
     },
     "CI/CD & DevOps": {
-      "items": ["Jenkins", "GitHub Actions", "AWS CodePipeline", "GitOps"],
-      "icon": "🔄",
-      "color": "green"
+      "items": [
+        "Jenkins",
+        "GitHub Actions",
+        "AWS CodePipeline",
+        "GitOps"
+      ],
+      "icon": "workflow",
+      "color": "emerald"
     },
     "AI & Machine Learning": {
-      "items": ["AWS Bedrock", "Claude API (Anthropic)", "AWS SageMaker", "LangChain", "RAG Pipelines"],
-      "icon": "🤖",
-      "color": "ai"
+      "items": [
+        "AWS Bedrock",
+        "Claude API (Anthropic)",
+        "Ollama (local LLMs)",
+        "AWS SageMaker",
+        "LangChain",
+        "RAG Pipelines"
+      ],
+      "icon": "brain",
+      "color": "violet"
     },
-    "Monitoring & Security": {
-      "items": ["CloudWatch", "Grafana", "Prometheus", "Qualys", "AWS GuardDuty", "AWS Config"],
-      "icon": "🔍",
+    "Observability & Security": {
+      "items": [
+        "CloudWatch",
+        "Grafana",
+        "Prometheus",
+        "Qualys",
+        "AWS GuardDuty",
+        "AWS Config",
+        "Security Hub"
+      ],
+      "icon": "shield",
       "color": "cyan"
     },
     "Programming": {
-      "items": ["Python", "JavaScript / TypeScript", "Shell Scripting (Bash)", "SQL"],
-      "icon": "💻",
-      "color": "green"
+      "items": [
+        "Python",
+        "TypeScript / JavaScript",
+        "Bash",
+        "SQL"
+      ],
+      "icon": "code",
+      "color": "emerald"
     },
-    "Web Development": {
-      "items": ["React.js", "Node.js", "FastAPI", "REST APIs"],
-      "icon": "🌐",
-      "color": "blue"
+    "Product Engineering": {
+      "items": [
+        "React / Next.js",
+        "Node.js / Express",
+        "MongoDB / Redis",
+        "WebSockets / Socket.IO",
+        "React Native (Expo)"
+      ],
+      "icon": "globe",
+      "color": "sky"
     }
   },
   "experience": [
@@ -71,14 +345,27 @@
       "location": "Delhi, India",
       "type": "Full-time",
       "highlights": [
+        "Manage the AWS estate for TCS client IFF (International Flavors & Fragrances): 20+ AWS accounts and 2,000+ servers",
+        "Own server deployment and day-to-day operations across the IFF fleet — provisioning, configuration, access, monitoring and troubleshooting",
         "Designed and deployed cloud-native applications on AWS (EC2, Lambda, S3, RDS, API Gateway)",
-        "Built AWS Cloud Data Inventory Tool — automated discovery/reporting across accounts → reduced manual effort by 80%",
+        "Built the AWS Cloud Data Inventory Tool — automated discovery and reporting across accounts, cutting manual effort by 80%",
         "Automated infrastructure provisioning with Terraform and CloudFormation for 50+ environments",
-        "Improved CI/CD pipelines (Jenkins, AWS CodePipeline) → 60% faster deployment cycles",
-        "Implemented security compliance automation (AWS Config, GuardDuty) — maintained 100% compliance score",
-        "Optimized AWS usage across teams → reduced monthly cloud bills by 20%",
+        "Improved CI/CD pipelines (Jenkins, AWS CodePipeline) for 60% faster deployment cycles",
+        "Implemented security compliance automation (AWS Config, GuardDuty) and held a 100% compliance score",
+        "Optimized AWS usage across teams, reducing monthly cloud bills by 20%",
         "Enhanced monitoring with CloudWatch + Grafana, cutting incident response time by 50%",
-        "Integrated AWS Bedrock and GenAI capabilities for intelligent infrastructure automation"
+        "Integrated AWS Bedrock and GenAI capabilities into infrastructure automation"
+      ],
+      "client": "IFF (International Flavors & Fragrances)",
+      "scope": [
+        {
+          "value": "20+",
+          "label": "AWS accounts managed"
+        },
+        {
+          "value": "2,000+",
+          "label": "servers on AWS"
+        }
       ]
     },
     {
@@ -89,7 +376,7 @@
       "location": "Remote",
       "type": "Internship",
       "highlights": [
-        "Built production full-stack apps using React.js, Node.js, and Python",
+        "Built production full-stack apps using React.js, Node.js and Python",
         "Designed RESTful APIs integrated with MongoDB and PostgreSQL databases",
         "Prototyped ML features for client-facing solutions using scikit-learn and Python",
         "Managed server deployment and cloud integration, improving delivery reliability by 40%",
@@ -99,146 +386,193 @@
   ],
   "projects": [
     {
-      "id": 0,
-      "name": "ServerPulse",
-      "description": "Real-time server analytics platform built from scratch — live at serverpulse.in. Tracks CPU, memory, disk, network, and process-level metrics in real time across multiple servers from a single dashboard. Designed for DevOps teams and sysadmins who need instant observability without the cost of enterprise tools.",
-      "tech": ["React", "Node.js", "WebSockets", "MongoDB", "Docker", "AWS"],
-      "impact": "Live SaaS product — real-time analytics across multiple servers from one dashboard",
-      "icon": "🖥️",
-      "category": "devops",
-      "featured": true,
-      "link": "https://serverpulse.in",
-      "stats": ["Real-time metrics", "Multi-server", "Live product"]
-    },
-    {
       "id": 1,
       "name": "TCS AWS Management Platform",
-      "description": "Full-stack enterprise platform for managing AWS resources across multiple accounts and environments. Features a browser-based SSH terminal with Monaco editor, EC2/S3/RDS/EKS dashboards, real-time cost analysis with forecasting, Zabbix agent monitoring, automated Excel reports, and Azure AD SSO — all containerised with Docker. ~35,000 lines of TypeScript.",
-      "tech": ["React 18", "TypeScript", "Node.js", "AWS SDK v3", "MongoDB", "xterm.js", "Monaco Editor", "Docker"],
+      "description": "Full-stack enterprise platform for managing AWS resources across multiple accounts and environments: browser-based SSH terminal with Monaco editor, EC2 / S3 / RDS / EKS dashboards, cost analysis with forecasting, Zabbix agent monitoring, automated Excel reports and Azure AD SSO — all containerised with Docker.",
+      "tech": [
+        "React 18",
+        "TypeScript",
+        "Node.js",
+        "AWS SDK v3",
+        "MongoDB",
+        "xterm.js",
+        "Monaco Editor",
+        "Docker"
+      ],
       "impact": "80% reduction in manual ops effort across TCS cloud teams",
-      "icon": "🏗️",
-      "category": "devops",
+      "icon": "building",
       "featured": true,
-      "stats": ["50+ REST endpoints", "3 automated cron jobs", "~35K lines TypeScript"]
-    },
-    {
-      "id": 2,
-      "name": "MonitorPlatform — SaaS Monitoring",
-      "description": "Self-hosted multi-tenant SaaS server monitoring platform. A lightweight Node.js agent (single file, cross-platform: Linux / macOS / Windows) pushes real-time metrics every 10 seconds via Redis pub/sub to live Socket.io dashboards. Covers CPU, memory, disk, GPU, temperature, security events (SSH logins, sudo, failed auth), vulnerability scanning (packages, ports, malware, risk score 0–100), PM2 app monitoring, log collection, configurable alerts (email + push), and fleet views.",
-      "tech": ["React 18", "Node.js", "MongoDB", "Redis", "Socket.io", "Docker", "Kubernetes", "Tailwind CSS"],
-      "impact": "Full observability stack — real-time metrics, security, vulns & alerts in one dashboard",
-      "icon": "📡",
-      "category": "devops",
-      "featured": true,
-      "stats": ["10s metric refresh", "Cross-platform agent", "Multi-tenant SaaS"]
+      "stats": [
+        "50+ REST endpoints",
+        "3 automated cron jobs",
+        "~35K lines TypeScript"
+      ]
     },
     {
       "id": 3,
       "name": "CI/CD Pipeline Optimization",
-      "description": "Complete redesign of deployment pipelines at TCS using parallelization, smart caching, and automated quality gates. Introduced staged rollouts with automated rollback on failure detection.",
-      "tech": ["Jenkins", "AWS CodePipeline", "Docker", "Terraform", "GitHub Actions"],
+      "description": "Complete redesign of deployment pipelines at TCS using parallelization, smart caching and automated quality gates. Introduced staged rollouts with automated rollback on failure detection.",
+      "tech": [
+        "Jenkins",
+        "AWS CodePipeline",
+        "Docker",
+        "Terraform",
+        "GitHub Actions"
+      ],
       "impact": "60% faster deployments, zero failed releases",
-      "icon": "🚀",
-      "category": "devops"
+      "icon": "rocket"
     },
     {
       "id": 4,
       "name": "Cloud Cost Optimization Engine",
-      "description": "Comprehensive AWS cost analysis system with automated rightsizing recommendations, scheduled resource cleanup, and multi-account spend visibility. Tracks cost by service and resource with forecast views.",
-      "tech": ["AWS Cost Explorer", "CloudWatch", "Python", "Lambda", "SNS"],
+      "description": "AWS cost analysis system with automated rightsizing recommendations, scheduled resource cleanup and multi-account spend visibility. Tracks cost by service and resource with forecast views.",
+      "tech": [
+        "AWS Cost Explorer",
+        "CloudWatch",
+        "Python",
+        "Lambda",
+        "SNS"
+      ],
       "impact": "20% monthly cost savings (~$15K/month)",
-      "icon": "💰",
-      "category": "devops"
+      "icon": "dollar"
     },
     {
       "id": 5,
       "name": "Security Compliance Automation",
-      "description": "Auto-remediation platform using AWS Config custom rules and Lambda functions to enforce security policies continuously. Real-time compliance dashboards, automated alerts, and audit trails.",
-      "tech": ["AWS Config", "Lambda", "GuardDuty", "Python", "SNS", "Security Hub"],
+      "description": "Auto-remediation using AWS Config custom rules and Lambda functions to enforce security policies continuously. Real-time compliance dashboards, automated alerts and audit trails.",
+      "tech": [
+        "AWS Config",
+        "Lambda",
+        "GuardDuty",
+        "Python",
+        "SNS",
+        "Security Hub"
+      ],
       "impact": "100% compliance score, zero security incidents",
-      "icon": "🔒",
-      "category": "devops"
+      "icon": "shield"
     },
     {
       "id": 6,
       "name": "Kubernetes Multi-Cluster Platform",
-      "description": "Production-grade multi-cluster Kubernetes on AWS EKS with Helm charts, HPA/VPA autoscaling, and GitOps-based deployments via ArgoCD. Includes Prometheus + Grafana observability stack.",
-      "tech": ["Kubernetes", "AWS EKS", "Helm", "ArgoCD", "Prometheus", "Grafana"],
-      "impact": "99.9% uptime SLA achieved across all environments",
-      "icon": "⚙️",
-      "category": "devops"
+      "description": "Production-grade multi-cluster Kubernetes on AWS EKS with Helm charts, HPA / VPA autoscaling and GitOps deployments via ArgoCD. Includes a Prometheus + Grafana observability stack.",
+      "tech": [
+        "Kubernetes",
+        "AWS EKS",
+        "Helm",
+        "ArgoCD",
+        "Prometheus",
+        "Grafana"
+      ],
+      "impact": "99.9% uptime SLA across all environments",
+      "icon": "layers"
     }
   ],
   "aiProjects": [
     {
       "id": 1,
       "name": "AI-Powered Cloud Cost Intelligence",
-      "description": "Intelligent cost optimization engine using AWS Bedrock (Claude) to analyze spending patterns, predict future costs, and generate natural-language optimization recommendations with automated execution.",
-      "tech": ["AWS Bedrock", "Claude API", "Python", "Lambda", "S3", "QuickSight"],
+      "description": "Cost optimization engine using AWS Bedrock (Claude) to analyze spending patterns, predict future costs and generate natural-language optimization recommendations with automated execution.",
+      "tech": [
+        "AWS Bedrock",
+        "Claude API",
+        "Python",
+        "Lambda",
+        "S3",
+        "QuickSight"
+      ],
       "impact": "35% additional cost reduction beyond manual analysis",
-      "icon": "🤖",
-      "badge": "GenAI",
-      "color": "purple"
+      "icon": "bot",
+      "badge": "GenAI"
     },
     {
       "id": 2,
       "name": "DevOps AI Incident Response Bot",
-      "description": "LLM-powered incident response system integrated with PagerDuty and Slack. Automatically analyzes alerts, performs root cause analysis, suggests fixes, and executes approved runbooks.",
-      "tech": ["Claude API", "Python", "Slack SDK", "Lambda", "PagerDuty API", "LangChain"],
+      "description": "LLM-powered incident response integrated with PagerDuty and Slack. Analyzes alerts, performs root cause analysis, suggests fixes and executes approved runbooks.",
+      "tech": [
+        "Claude API",
+        "Python",
+        "Slack SDK",
+        "Lambda",
+        "PagerDuty API",
+        "LangChain"
+      ],
       "impact": "70% reduction in mean time to resolution (MTTR)",
-      "icon": "🧠",
-      "badge": "LLM",
-      "color": "cyan"
+      "icon": "brain",
+      "badge": "LLM"
     },
     {
       "id": 3,
       "name": "Intelligent Log Anomaly Detector",
-      "description": "ML-based log analysis system deployed on AWS SageMaker using Random Cut Forest algorithm to detect anomalies in CloudWatch logs and predict failures before they cause outages.",
-      "tech": ["AWS SageMaker", "Python", "CloudWatch", "Boto3", "Random Cut Forest", "SNS"],
+      "description": "ML-based log analysis deployed on AWS SageMaker using Random Cut Forest to detect anomalies in CloudWatch logs and predict failures before they cause outages.",
+      "tech": [
+        "AWS SageMaker",
+        "Python",
+        "CloudWatch",
+        "Boto3",
+        "Random Cut Forest",
+        "SNS"
+      ],
       "impact": "Predicted 90% of infrastructure failures before user impact",
-      "icon": "🔍",
-      "badge": "ML",
-      "color": "blue"
+      "icon": "search",
+      "badge": "ML"
     },
     {
       "id": 4,
       "name": "Infrastructure RAG Knowledge Base",
-      "description": "RAG-powered chatbot for infrastructure documentation, runbooks, and SOPs built on AWS Bedrock Knowledge Bases. Engineers get context-aware answers from thousands of internal documents instantly.",
-      "tech": ["AWS Bedrock", "RAG", "OpenSearch", "Python", "S3", "Claude Embeddings"],
-      "impact": "80% reduction in documentation-related queries to ops team",
-      "icon": "💡",
-      "badge": "RAG",
-      "color": "purple"
+      "description": "RAG-powered chatbot for infrastructure documentation, runbooks and SOPs on AWS Bedrock Knowledge Bases. Engineers get context-aware answers from thousands of internal documents instantly.",
+      "tech": [
+        "AWS Bedrock",
+        "RAG",
+        "OpenSearch",
+        "Python",
+        "S3",
+        "Embeddings"
+      ],
+      "impact": "80% reduction in documentation queries to the ops team",
+      "icon": "lightbulb",
+      "badge": "RAG"
     }
   ],
   "certifications": [
     {
+      "name": "AWS Certified Solutions Architect – Professional",
+      "short": "Solutions Architect",
+      "level": "Professional",
+      "issuer": "Amazon Web Services",
+      "issued": "September 13, 2026",
+      "expires": "September 13, 2029",
+      "validationNumber": "6c740dd5a5ce416bafa087d45b758067",
+      "verifyUrl": "https://aws.amazon.com/verification",
+      "featured": true,
+      "color": "amber"
+    },
+    {
       "name": "AWS Certified Solutions Architect – Associate",
+      "short": "Solutions Architect",
+      "level": "Associate",
       "issuer": "Amazon Web Services",
-      "icon": "☁️",
-      "color": "orange",
-      "verified": true
-    },
-    {
-      "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services",
-      "icon": "🏗️",
-      "color": "orange",
-      "verified": true
-    },
-    {
-      "name": "HashiCorp Certified: Terraform Associate",
-      "issuer": "HashiCorp",
-      "icon": "🔧",
-      "color": "purple",
-      "verified": true
+      "color": "amber"
     },
     {
       "name": "AWS Certified AI Practitioner",
+      "short": "AI Practitioner",
+      "level": "Foundational",
       "issuer": "Amazon Web Services",
-      "icon": "🤖",
-      "color": "blue",
-      "verified": true
+      "color": "violet"
+    },
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "short": "Cloud Practitioner",
+      "level": "Foundational",
+      "issuer": "Amazon Web Services",
+      "color": "sky"
+    },
+    {
+      "name": "HashiCorp Certified: Terraform Associate",
+      "short": "Terraform Associate",
+      "level": "Associate",
+      "issuer": "HashiCorp",
+      "color": "violet"
     }
   ],
   "achievements": [
@@ -246,15 +580,13 @@
       "title": "Star Employee of the Month",
       "organization": "Tata Consultancy Services",
       "description": "Recognized for delivering critical infrastructure automation projects ahead of schedule with zero production incidents.",
-      "icon": "⭐",
-      "color": "orange"
+      "icon": "star"
     },
     {
       "title": "Cloud Cost Optimization Leader",
       "organization": "Tata Consultancy Services",
-      "description": "Led organization-wide AWS cost optimization initiative saving 20% monthly spend — recognized at division level for financial impact.",
-      "icon": "💰",
-      "color": "green"
+      "description": "Led an organization-wide AWS cost optimization initiative saving 20% of monthly spend — recognized at division level for financial impact.",
+      "icon": "trophy"
     }
   ],
   "education": {
@@ -266,79 +598,77 @@
     "maxCgpa": "10"
   },
   "journey": {
-    "intro": "From a curious CS student in Bokaro to building enterprise cloud platforms at TCS — this is my story of falling in love with infrastructure, automation, and the cloud.",
+    "intro": "From a curious CS student in Bokaro to running 2,000+ servers on AWS at TCS and shipping my own products — this is my story of falling in love with infrastructure, automation and the cloud.",
     "chapters": [
       {
         "id": 1,
         "year": "2018",
         "title": "The Beginning — B.Tech CSE",
-        "emoji": "🎓",
-        "color": "blue",
-        "content": "Started my B.Tech in Computer Science & Engineering at Guru Gobind Singh Educational Society's Technical Campus in Bokaro, Jharkhand. From day one I was fascinated by how computers actually work — not just the code, but the systems beneath it. I gravitated toward operating systems, networking, and databases. I finished with a CGPA of 8.64/10."
+        "color": "sky",
+        "content": "Started my B.Tech in Computer Science & Engineering at Guru Gobind Singh Educational Society's Technical Campus in Bokaro, Jharkhand. From day one I was fascinated by how computers actually work — not just the code, but the systems beneath it. I gravitated toward operating systems, networking and databases, and finished with a CGPA of 8.64/10."
       },
       {
         "id": 2,
         "year": "2021",
         "title": "First Real Code — Panicle Tech Internship",
-        "emoji": "💻",
-        "color": "green",
-        "content": "Joined Panicle Tech as a Full Stack Developer intern while still in my final year. This was my first taste of real production code. I built full-stack applications with React.js and Node.js, designed RESTful APIs, integrated MongoDB and SQL databases, and even prototyped some ML features for client projects. Managing server deployments taught me that software engineering is only half the picture — the infrastructure matters just as much."
+        "color": "emerald",
+        "content": "Joined Panicle Tech as a Full Stack Developer intern in my final year. I built full-stack applications with React.js and Node.js, designed RESTful APIs, integrated MongoDB and SQL databases, and prototyped ML features for client projects. Managing server deployments taught me that software is only half the picture — the infrastructure matters just as much."
       },
       {
         "id": 3,
         "year": "2022",
         "title": "Joining TCS — Cloud Engineer",
-        "emoji": "☁️",
-        "color": "orange",
-        "content": "Graduated and joined Tata Consultancy Services as a Cloud Engineer in July 2022. TCS is where I found my true calling: cloud infrastructure and DevOps. I started working with AWS at scale — managing EC2 fleets, building Lambda functions, designing S3 workflows, and setting up RDS databases. I quickly realised how much impact good infrastructure engineering has on an entire organisation."
+        "color": "amber",
+        "content": "Graduated and joined Tata Consultancy Services as a Cloud Engineer in July 2022. TCS is where I found my calling: cloud infrastructure and DevOps. I started working with AWS at scale — EC2 fleets, Lambda functions, S3 workflows and RDS databases — and saw how much impact good infrastructure engineering has on an entire organisation."
       },
       {
         "id": 4,
         "year": "2022–2023",
         "title": "Building the AWS Management Platform",
-        "emoji": "🏗️",
-        "color": "green",
-        "content": "I designed and built the TCS AWS Management Platform — a full-stack enterprise system for managing AWS resources across multiple accounts and environments. It included a browser-based SSH terminal with Monaco editor, real-time cost analysis, EC2/S3/RDS/EKS dashboards, Zabbix agent monitoring, and automated Excel reporting. This project alone involved ~35,000 lines of TypeScript and taught me that great platform engineering is about removing friction for every engineer in the organisation."
+        "color": "emerald",
+        "content": "I designed and built the TCS AWS Management Platform — a full-stack system for managing AWS resources across multiple accounts and environments, with a browser-based SSH terminal, real-time cost analysis, EC2 / S3 / RDS / EKS dashboards, Zabbix monitoring and automated reporting. ~35,000 lines of TypeScript that taught me great platform engineering is about removing friction for every engineer."
       },
       {
         "id": 5,
         "year": "2023",
-        "title": "Going Deep on DevOps — Certifications",
-        "emoji": "🏆",
-        "color": "orange",
-        "content": "I earned the AWS Certified Solutions Architect – Associate and AWS Certified Cloud Practitioner certifications, followed by the HashiCorp Terraform Associate. These weren't just exams — they forced me to understand infrastructure architecture at a much deeper level. I started leading CI/CD optimisation initiatives, cutting deployment times by 60%, and driving a company-wide cloud cost optimisation that saved 20% of monthly AWS spend."
+        "title": "Going Deep — First Certifications",
+        "color": "amber",
+        "content": "Earned the AWS Solutions Architect – Associate and Cloud Practitioner certifications, followed by HashiCorp Terraform Associate. They forced me to understand architecture at a much deeper level. I started leading CI/CD optimisation (60% faster deployments) and a company-wide cost optimisation that saved 20% of monthly AWS spend."
       },
       {
         "id": 6,
-        "year": "2023–2024",
-        "title": "MonitorPlatform — Building a SaaS from Scratch",
-        "emoji": "📡",
-        "color": "cyan",
-        "content": "Outside of TCS, I designed and built MonitorPlatform — a self-hosted, multi-tenant SaaS server monitoring system. I wrote a cross-platform Node.js agent that runs on Linux, macOS, and Windows, pushing real-time metrics every 10 seconds via Redis pub/sub to live Socket.io dashboards. The platform covers CPU, memory, disk, GPU, security events, vulnerability scanning, PM2 app monitoring, log collection, and configurable alerts. Building a production SaaS end-to-end — from database schema design to Kubernetes deployment — was one of the most complete engineering experiences of my career."
-      },
-      {
-        "id": 65,
         "year": "2024",
-        "title": "ServerPulse — Launching a Live SaaS Product",
-        "emoji": "🖥️",
-        "color": "blue",
-        "content": "I built and launched ServerPulse (serverpulse.in) — a real-time server analytics platform. From scratch I designed the architecture, wrote the backend, built the React frontend, and deployed it as a live product. ServerPulse tracks CPU, memory, disk, network, and process-level metrics across multiple servers in real time from a single dashboard. Shipping a live product that real users access was a completely different challenge from internal tools — it forced me to think about reliability, UX, and scalability simultaneously."
+        "title": "ServerPulse — Building and Launching a SaaS",
+        "color": "indigo",
+        "content": "Outside TCS I designed, built and launched ServerPulse (serverpulse.in) — a multi-tenant server monitoring SaaS. A cross-platform Node.js agent pushes metrics every 10 seconds through Redis pub/sub into live Socket.IO dashboards, covering CPU, memory, disk, GPU, security events, vulnerability scanning, PM2 / Docker and logs. Shipping a product real teams depend on forced me to think about reliability, UX and scale at the same time."
       },
       {
         "id": 7,
         "year": "2024–2025",
         "title": "Embracing AI — AWS AI Practitioner",
-        "emoji": "🤖",
-        "color": "purple",
-        "content": "I became genuinely excited about the intersection of DevOps and AI. I earned the AWS Certified AI Practitioner certification and started building AI-augmented infrastructure tools — using AWS Bedrock and the Claude API for intelligent cost optimization, LLM-powered incident response bots, and ML-based anomaly detection in CloudWatch logs. I believe the next generation of platform engineering will be deeply AI-assisted, and I want to be at that frontier."
+        "color": "violet",
+        "content": "Became genuinely excited about where DevOps meets AI. I earned the AWS Certified AI Practitioner and started building AI-augmented infrastructure tools with AWS Bedrock and the Claude API — cost intelligence, LLM-powered incident response and ML anomaly detection on CloudWatch logs. ServerPulse gained a private AI assistant running on local LLMs."
       },
       {
         "id": 8,
+        "year": "2026",
+        "title": "CloudLedger, Cloudwright & Terminal Agent",
+        "color": "sky",
+        "content": "Expanded the serverpulse.in family with three more products. CloudLedger is a multi-cloud FinOps platform for AWS, GCP and Azure with an AI Cost Copilot. Cloudwright turns plain-English requirements into reviewed architecture diagrams and production-ready Terraform, with approvals, spend caps and audit built in. Terminal Agent is an AI agent for the command line that plans shell commands, rates their risk and runs only what you approve. All three are live."
+      },
+      {
+        "id": 9,
+        "year": "Sep 2026",
+        "title": "AWS Solutions Architect – Professional",
+        "color": "amber",
+        "content": "Passed the AWS Certified Solutions Architect – Professional exam — AWS's most demanding architecture certification, covering multi-account strategy, migration, cost-optimised and resilient design at enterprise scale. It validates the work I do every day: designing complex AWS systems that are secure, reliable and economical."
+      },
+      {
+        "id": 10,
         "year": "Now",
         "title": "What Drives Me",
-        "emoji": "🚀",
-        "color": "green",
-        "content": "I'm passionate about building systems that make engineers more productive and organisations more resilient. Whether it's a zero-downtime Kubernetes deployment, a cost optimisation that saves thousands of dollars a month, or an AI bot that resolves incidents before humans even notice — I care deeply about the impact of infrastructure on real people and real businesses. My goal is to grow into a world-class SRE and Platform Engineer who bridges DevOps and AI."
+        "color": "emerald",
+        "content": "Today I manage 20+ AWS accounts and 2,000+ servers for IFF at TCS, and run four products of my own on serverpulse.in. I'm passionate about systems that make engineers more productive and organisations more resilient — a zero-downtime rollout, a cost optimisation that saves thousands a month, or an AI agent that does the toil safely. My goal is to keep growing as a Solutions Architect and Platform Engineer who bridges cloud, DevOps and AI."
       }
     ]
   }

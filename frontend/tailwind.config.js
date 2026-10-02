@@ -4,52 +4,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50:  '#fdfcfb',
-          100: '#f9f5f0',
-          200: '#f0e9df',
-          300: '#ebe2d8',
-          400: '#ddd3c8',
+        night: {
+          950: '#05060a',
+          900: '#080a10',
+          850: '#0b0e16',
+          800: '#10131d',
+          700: '#171b28',
         },
-        ink: {
-          50:  '#f5f5f5',
-          100: '#e5e5e5',
-          200: '#cccccc',
-          300: '#aaaaaa',
-          400: '#888888',
-          500: '#666666',
-          600: '#444444',
-          700: '#2e2e2e',
-          800: '#1c1c1c',
-          900: '#111111',
-        },
-        accent: {
-          green:  '#10b981',
-          blue:   '#3b82f6',
-          purple: '#8b5cf6',
-          orange: '#f59e0b',
+        fg: {
+          DEFAULT: '#e9ecf2',
+          muted:   '#a0a8b8',
+          dim:     '#6b7385',
         },
       },
       fontFamily: {
-        heading: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
         body:    ['Inter', 'system-ui', 'sans-serif'],
-        mono:    ['"Fira Code"', 'monospace'],
+        mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
-      fontSize: {
-        'display-xl': ['clamp(2.8rem,6.5vw,5rem)', { lineHeight: '1.06', letterSpacing: '-0.025em' }],
-        'display-lg': ['clamp(2rem,4vw,3.5rem)',   { lineHeight: '1.1',  letterSpacing: '-0.02em'  }],
-        'display-md': ['clamp(1.5rem,2.5vw,2rem)', { lineHeight: '1.2',  letterSpacing: '-0.015em' }],
+      keyframes: {
+        marquee:  { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+        floaty:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+        ping2:    { '0%': { transform: 'scale(1)', opacity: '0.7' }, '80%,100%': { transform: 'scale(2.4)', opacity: '0' } },
+        draw:     { from: { strokeDashoffset: '400' }, to: { strokeDashoffset: '0' } },
+        blink:    { '0%,49%': { opacity: '1' }, '50%,100%': { opacity: '0' } },
+        fadeUp:   { from: { opacity: '0', transform: 'translateY(10px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+        shimmer:  { from: { backgroundPosition: '200% 0' }, to: { backgroundPosition: '-200% 0' } },
       },
-      boxShadow: {
-        'card':    '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
-        'card-hover': '0 8px 30px rgba(0,0,0,0.08)',
-        'btn':     '0 1px 2px rgba(0,0,0,0.12)',
-      },
-      borderRadius: {
-        'xl2': '1rem',
-      },
-      transitionTimingFunction: {
-        smooth: 'cubic-bezier(0.4,0,0.2,1)',
+      animation: {
+        marquee: 'marquee 40s linear infinite',
+        floaty:  'floaty 6s ease-in-out infinite',
+        ping2:   'ping2 2s cubic-bezier(0,0,0.2,1) infinite',
+        draw:    'draw 2.2s ease-out forwards',
+        blink:   'blink 1s step-end infinite',
+        fadeUp:  'fadeUp 0.4s ease forwards',
+        shimmer: 'shimmer 6s linear infinite',
       },
     },
   },

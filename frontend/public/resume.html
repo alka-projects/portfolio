@@ -256,10 +256,12 @@
 
     /* ── Print ── */
     @media print {
-      .action-bar { display: none !important; }
+      .action-bar, .page-spacer { display: none !important; }
       body { background: #ffffff; }
-      .resume { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      .resume { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; zoom: 0.8; }
       .resume-body { grid-template-columns: 1fr 260px; }
+      .section { margin-bottom: 1.4rem; }
+      .job, .project { break-inside: avoid; }
       .resume-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .metric { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
@@ -282,7 +284,7 @@
     <!-- Header -->
     <div class="resume-header">
       <h1>Md Arshad Ali</h1>
-      <p class="header-title">Cloud &amp; DevOps Engineer</p>
+      <p class="header-title">Cloud &amp; DevOps Engineer · AWS Certified Solutions Architect – Professional</p>
       <div class="contact-row">
         <a href="mailto:arshali471@gmail.com">arshali471@gmail.com</a>
         <span class="contact-sep">·</span>
@@ -309,13 +311,13 @@
         <div class="section">
           <p class="section-title">Professional Summary</p>
           <p class="summary">
-            Results-driven Cloud &amp; DevOps Engineer with <strong>3+ years</strong> of experience designing, deploying, and optimising enterprise-scale AWS infrastructure at Tata Consultancy Services. Specialises in CI/CD automation, Kubernetes orchestration, infrastructure-as-code, and AI-augmented DevOps workflows. Proven track record delivering measurable business impact across cost, reliability, and delivery speed. Open to DevOps, SRE, and Platform Engineering roles — anywhere in India or internationally.
+            <strong>AWS Certified Solutions Architect – Professional</strong> and Cloud &amp; DevOps Engineer with <strong>4+ years</strong> of experience designing, deploying, and optimising enterprise-scale AWS infrastructure at Tata Consultancy Services. Specialises in CI/CD automation, Kubernetes orchestration, infrastructure-as-code, and AI-augmented DevOps workflows. Manages <strong>20+ AWS accounts and 2,000+ servers</strong> for client IFF. Builds and runs <strong>four live products</strong> on serverpulse.in (observability, FinOps, AI-generated Terraform, AI terminal agent). Open to DevOps, SRE, Platform Engineering and Solutions Architect roles — anywhere in India or internationally.
           </p>
           <div class="metrics-row">
             <div class="metric"><span class="metric-num">80%</span><span class="metric-label">Ops Reduction</span></div>
             <div class="metric"><span class="metric-num">60%</span><span class="metric-label">Faster Deploys</span></div>
             <div class="metric"><span class="metric-num">20%</span><span class="metric-label">Cost Savings</span></div>
-            <div class="metric"><span class="metric-num">3+</span><span class="metric-label">Yrs Exp.</span></div>
+            <div class="metric"><span class="metric-num">4+</span><span class="metric-label">Yrs Exp.</span></div>
           </div>
         </div>
 
@@ -330,8 +332,9 @@
               </div>
               <span class="job-date">Jul 2022 – Present</span>
             </div>
-            <p class="job-location">Delhi, India · Full-time</p>
+            <p class="job-location">Delhi, India · Full-time · Client: IFF (International Flavors &amp; Fragrances)</p>
             <ul>
+              <li>Manage the AWS estate for client <strong>IFF</strong> — <strong>20+ AWS accounts</strong> and <strong>2,000+ servers</strong>; own server deployment and day-to-day operations: provisioning, configuration, access, monitoring and troubleshooting</li>
               <li>Built <strong>AWS Cloud Data Inventory &amp; Management Platform</strong> (35K+ lines TypeScript) — browser SSH terminal, EC2 / S3 / RDS / EKS dashboards, cost analysis engine, Azure AD SSO → <strong>80% reduction in manual ops effort</strong></li>
               <li>Optimised CI/CD pipelines (Jenkins, AWS CodePipeline, GitHub Actions) → <strong>60% faster deployment cycles</strong></li>
               <li>Led cloud cost optimisation across business unit → <strong>20% reduction in monthly AWS spend</strong>, recognised at division level</li>
@@ -361,21 +364,26 @@
         </div>
 
         <div class="section">
-          <p class="section-title">Key Projects</p>
+          <p class="section-title">Key Projects — Live Products on serverpulse.in</p>
 
           <div class="project">
             <p class="project-name">ServerPulse <a class="project-link" href="https://serverpulse.in" target="_blank">↗ serverpulse.in</a></p>
-            <p class="project-desc">Real-time server analytics platform. Cross-platform agent (Linux / macOS / Windows) streams CPU, memory, disk, and network metrics to a centralised dashboard. Multi-server support, configurable alerts, security scanning. Built with React, Node.js, Redis, Socket.io. <strong>Live in production.</strong></p>
+            <p class="project-desc">Multi-tenant server monitoring SaaS. Lightweight agent streams metrics every 10s over WebSockets; smart alerting, vulnerability / port / malware scanning, HTTP, SSL, PM2 &amp; Docker monitoring, log forwarding and a private AI assistant on a local LLM (Ollama). Node.js, MongoDB, Redis, Socket.IO, React, Expo mobile app. <strong>Live in production.</strong></p>
           </div>
 
           <div class="project">
-            <p class="project-name">AI Cost Intelligence &amp; Incident Response System</p>
-            <p class="project-desc">AWS Bedrock + Claude API integration that analyses cloud spend patterns and generates natural-language recommendations → <strong>35% additional cost reduction</strong>. LangChain-powered incident response bot integrated with PagerDuty and Slack → <strong>70% MTTR reduction</strong>.</p>
+            <p class="project-name">CloudLedger <a class="project-link" href="https://cloudledger.serverpulse.in" target="_blank">↗ cloudledger.serverpulse.in</a></p>
+            <p class="project-desc">Multi-cloud FinOps platform for AWS, GCP and Azure — cost explorer, anomaly detection, forecasting, virtual-tag allocation, automated optimization with approval and rollback, and a <strong>Claude-powered Cost Copilot</strong>. Next.js, TypeScript, Express, MongoDB.</p>
           </div>
 
           <div class="project">
-            <p class="project-name">RAG Infrastructure Knowledge Base</p>
-            <p class="project-desc">AWS Bedrock Knowledge Bases embedding all infrastructure runbooks and operational playbooks. Enables engineers to query infra state and resolve incidents in natural language → <strong>80% reduction in operational queries</strong>.</p>
+            <p class="project-name">Cloudwright <a class="project-link" href="https://cloudwright.serverpulse.in" target="_blank">↗ cloudwright.serverpulse.in</a></p>
+            <p class="project-desc">AI infrastructure co-pilot: plain-English requirements → architecture diagram → vetted, secure-by-default Terraform. Sandboxed plan / apply with live logs, per-env state, two-person prod approval, spend caps and audit. AWS Bedrock / Claude, Express, React.</p>
+          </div>
+
+          <div class="project">
+            <p class="project-name">Terminal Agent <a class="project-link" href="https://ai-agent.serverpulse.in" target="_blank">↗ ai-agent.serverpulse.in</a></p>
+            <p class="project-desc">AI agent platform for the command line: plain-English request → shell commands, each risk-rated by a local parser and Claude, run only with approval; self-corrects on failure and masks secrets. Team portal with device-code sign-in, per-person token metering and limits. Python, FastAPI, Claude Code CLI.</p>
           </div>
         </div>
 
@@ -428,6 +436,7 @@
             <div class="skill-tags">
               <span class="skill-tag">AWS Bedrock</span>
               <span class="skill-tag">Claude API</span>
+              <span class="skill-tag">Ollama</span>
               <span class="skill-tag">SageMaker</span>
               <span class="skill-tag">LangChain</span>
               <span class="skill-tag">RAG</span>
@@ -458,6 +467,13 @@
 
         <div class="section">
           <p class="section-title">Certifications</p>
+          <div class="cert">
+            <span class="cert-dot" style="background:#d97706"></span>
+            <div>
+              <p class="cert-name">AWS Solutions Architect – Professional</p>
+              <p class="cert-issuer">Amazon Web Services · Sep 2026</p>
+            </div>
+          </div>
           <div class="cert">
             <span class="cert-dot" style="background:#b45309"></span>
             <div>
@@ -511,7 +527,7 @@
     </div>
   </div>
 
-  <div style="height:2rem"></div>
+  <div class="page-spacer" style="height:2rem"></div>
 
 </body>
 </html>

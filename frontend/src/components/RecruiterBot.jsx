@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles, ChevronRight } from 'lucide-react';
+import { asset } from './ui';
 
 /* ── Knowledge base ─────────────────────────────────────── */
 const KB = {
@@ -10,22 +11,18 @@ const KB = {
       body: `Here's the quickest path to bringing Arshad on board:
 
 **Step 1 — Reach out directly**
-Drop him an email at **arshali471@gmail.com** or message on LinkedIn. He responds within 24 hours.
+Email **arshali471@gmail.com** or message him on LinkedIn. He responds within 24 hours.
 
 **Step 2 — Share the role**
-Send the JD and your timeline. He's open to DevOps, SRE, Platform, and AI/ML infrastructure roles — India or international.
+Send the JD and your timeline. He's open to Cloud, DevOps, SRE, Platform, Solutions Architect and AI infrastructure roles — India or international.
 
 **Step 3 — Schedule a call**
-A 30-min intro call is all it takes to align on expectations, tech fit, and joining timeline.
-
-**Step 4 — Move fast**
-Arshad is actively interviewing. Top candidates go quickly — don't wait.`,
+A 30-min intro call is enough to align on expectations, tech fit and joining timeline.`,
       contacts: [
-        { icon: '✉', label: 'Email (fastest)',   value: 'arshali471@gmail.com',            url: 'mailto:arshali471@gmail.com' },
-        { icon: '💼', label: 'LinkedIn',          value: 'md-arshad-ali-06279a1b2',         url: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2' },
-        { icon: '☎', label: 'Phone',              value: '+91 78708 31211',                 url: 'tel:+917870831211' },
+        { icon: '✉', label: 'Email (fastest)', value: 'arshali471@gmail.com',    url: 'mailto:arshali471@gmail.com' },
+        { icon: 'in', label: 'LinkedIn',       value: 'md-arshad-ali-06279a1b2', url: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2' },
+        { icon: '☎', label: 'Phone',           value: '+91 78708 31211',         url: 'tel:+917870831211' },
       ],
-      highlights: [],
     },
   },
 
@@ -36,18 +33,43 @@ Arshad is actively interviewing. Top candidates go quickly — don't wait.`,
       body: `Arshad is **actively open to new opportunities** in:
 
 • Cloud & DevOps Engineering
+• Solutions Architecture (AWS SA Professional)
 • Site Reliability Engineering (SRE)
 • Platform Engineering
-• AI/ML Infrastructure
+• AI / ML Infrastructure
 
 📍 **Location:** Delhi, India
-🌏 **Open to:** Any location in India and outside the country (international relocation welcome)
-💻 **Also open to:** Fully remote roles
-
-📧 Best way to reach: **arshali471@gmail.com**`,
+🌏 **Open to:** Any location in India and abroad (relocation welcome)
+💻 **Also open to:** Fully remote roles`,
       highlights: [
-        { label: 'Open to Work', desc: 'Available for immediate interviews' },
+        { label: 'Open to Work', desc: 'Available for interviews' },
         { label: 'India + Global', desc: 'Open to any location' },
+      ],
+    },
+  },
+
+  products: {
+    keywords: ['serverpulse', 'cloudledger', 'cloudwright', 'terminal agent', 'ai-agent', 'ai agent', 'agent platform', 'product', 'saas', 'side project'],
+    response: {
+      title: 'Products on serverpulse.in',
+      body: `Arshad designs, builds and runs **four live products**:
+
+**ServerPulse** — *serverpulse.in*
+Real-time server monitoring with AI: 10-second metrics over WebSockets, smart alerting, security scanning, HTTP / SSL / PM2 / Docker monitoring, and a private assistant on a local LLM. Node.js, MongoDB, Redis, Socket.IO, React, Expo mobile app.
+
+**CloudLedger** — *cloudledger.serverpulse.in*
+Multi-cloud FinOps for AWS, GCP and Azure: cost explorer, anomalies, forecasting, allocation, automated optimization and a Claude-powered Cost Copilot. Next.js, TypeScript, MongoDB.
+
+**Cloudwright** — *cloudwright.serverpulse.in*
+Plain-English requirements → architecture diagram → vetted Terraform, with sandboxed plan/apply, approvals, spend caps and audit. Bedrock / Claude, Express, React.
+
+**Terminal Agent** — *ai-agent.serverpulse.in*
+AI agent platform for the command line: plain-English request → shell commands, each risk-rated by a local parser and Claude, run only with approval. Team portal with per-person token metering and limits. Python, FastAPI, Claude Code CLI.`,
+      links: [
+        { label: 'ServerPulse',  url: 'https://serverpulse.in' },
+        { label: 'CloudLedger',  url: 'https://cloudledger.serverpulse.in' },
+        { label: 'Cloudwright',  url: 'https://cloudwright.serverpulse.in' },
+        { label: 'Terminal Agent', url: 'https://ai-agent.serverpulse.in' },
       ],
     },
   },
@@ -56,14 +78,30 @@ Arshad is actively interviewing. Top candidates go quickly — don't wait.`,
     keywords: ['who', 'about', 'tell me', 'summary', 'overview', 'introduce', 'arshad', 'background', 'profile'],
     response: {
       title: 'About Arshad Ali',
-      body: `Md Arshad Ali is a **Cloud & DevOps Engineer** based in **Delhi, India** with **3+ years** of hands-on experience building scalable, AI-augmented infrastructure at enterprise scale.
+      body: `Md Arshad Ali is an **AWS Certified Solutions Architect – Professional** and **Cloud & DevOps Engineer** based in **Delhi, India** with **4+ years** of hands-on experience.
 
-He currently works at **Tata Consultancy Services (TCS)** where he manages AWS infrastructure, builds CI/CD pipelines, and integrates AI capabilities into DevOps workflows.`,
+At **Tata Consultancy Services (TCS)** he manages **20+ AWS accounts and 2,000+ servers** for client **IFF**, builds CI/CD pipelines and integrates AI into DevOps workflows. Outside work he builds and runs **four live products** on serverpulse.in.`,
       highlights: [
-        { label: '80%', desc: 'Reduction in manual ops effort' },
-        { label: '60%', desc: 'Faster deployment cycles' },
+        { label: '80%', desc: 'Less manual ops effort' },
+        { label: '60%', desc: 'Faster deployments' },
         { label: '20%', desc: 'Cloud cost savings' },
-        { label: '3+',  desc: 'Years of experience' },
+        { label: '2,000+', desc: 'Servers on AWS' },
+        { label: '4',   desc: 'Live products' },
+      ],
+    },
+  },
+
+  certifications: {
+    keywords: ['cert', 'certif', 'aws', 'terraform', 'hashicorp', 'qualification', 'credential', 'badge', 'professional', 'architect'],
+    response: {
+      title: 'Certifications',
+      body: `**5 industry certifications**, led by AWS's top architecture credential:`,
+      certs: [
+        { name: 'AWS Certified Solutions Architect – Professional', issuer: 'Amazon Web Services · Sep 2026', color: '#fbbf24' },
+        { name: 'AWS Certified Solutions Architect – Associate',    issuer: 'Amazon Web Services',            color: '#fbbf24' },
+        { name: 'AWS Certified AI Practitioner',                    issuer: 'Amazon Web Services',            color: '#a78bfa' },
+        { name: 'AWS Certified Cloud Practitioner',                 issuer: 'Amazon Web Services',            color: '#38bdf8' },
+        { name: 'HashiCorp Certified: Terraform Associate',         issuer: 'HashiCorp',                      color: '#a78bfa' },
       ],
     },
   },
@@ -77,51 +115,45 @@ He currently works at **Tata Consultancy Services (TCS)** where he manages AWS i
         { group: 'Cloud',       items: ['AWS', 'EC2', 'Lambda', 'S3', 'RDS', 'EKS', 'Bedrock'] },
         { group: 'DevOps',      items: ['Kubernetes', 'Docker', 'Terraform', 'Helm', 'ArgoCD'] },
         { group: 'CI/CD',       items: ['Jenkins', 'GitHub Actions', 'AWS CodePipeline', 'GitOps'] },
-        { group: 'AI & ML',     items: ['AWS Bedrock', 'Claude API', 'SageMaker', 'LangChain', 'RAG'] },
+        { group: 'AI & ML',     items: ['AWS Bedrock', 'Claude API', 'Ollama', 'SageMaker', 'LangChain', 'RAG'] },
         { group: 'Monitoring',  items: ['Grafana', 'Prometheus', 'CloudWatch'] },
-        { group: 'Programming', items: ['Python', 'JavaScript', 'TypeScript', 'Bash'] },
+        { group: 'Programming', items: ['Python', 'TypeScript', 'JavaScript', 'Bash'] },
       ],
     },
   },
 
   experience: {
-    keywords: ['experience', 'work', 'job', 'career', 'tcs', 'tata', 'company', 'role', 'position', 'employer', 'history'],
+    keywords: ['experience', 'work', 'job', 'career', 'tcs', 'tata', 'iff', 'client', 'account', 'server', 'scale', 'company', 'role', 'position', 'employer', 'history'],
     response: {
       title: 'Work Experience',
       body: `**Tata Consultancy Services — Cloud Engineer** *(July 2022 – Present)*
-Delhi, India · Full-time
+Delhi, India · Full-time · Client: **IFF (International Flavors & Fragrances)**
 
-Key achievements at TCS:
+• Manages **20+ AWS accounts** and **2,000+ servers** for IFF — deployment and day-to-day operations
 • Built an **AWS Cloud Data Inventory Tool** → **80% reduction** in manual effort
 • Optimised CI/CD pipelines (Jenkins, CodePipeline) → **60% faster** deployments
 • Led cloud cost optimisation → **20% reduction** in monthly AWS spend
-• Maintained **100% security compliance** score (AWS Config, GuardDuty)
-• Cut incident response time by **50%** using CloudWatch + Grafana
+• Maintained a **100% security compliance** score (AWS Config, GuardDuty)
+• Cut incident response time by **50%** with CloudWatch + Grafana
 • Integrated **AWS Bedrock & GenAI** into infrastructure automation
 
 **Panicle Tech — Full Stack Developer** *(May 2021 – May 2022)*
-Remote · Internship
 Built production React + Node.js apps, designed REST APIs, prototyped ML features.`,
-      highlights: [],
     },
   },
 
   projects: {
-    keywords: ['project', 'built', 'build', 'create', 'develop', 'portfolio', 'serverpulse', 'monitor', 'platform', 'product'],
+    keywords: ['project', 'built', 'build', 'create', 'develop', 'portfolio', 'monitor', 'platform'],
     response: {
       title: 'Key Projects',
-      body: `**ServerPulse** *(Live Product — serverpulse.in)*
-Real-time server analytics platform — tracks CPU, memory, disk, network across multiple servers from a single dashboard.
+      body: `**Products (live on serverpulse.in)**
+ServerPulse (monitoring), CloudLedger (FinOps), Cloudwright (AI → Terraform) and Terminal Agent (AI agent for the terminal) — ask me about "products" for details.
 
 **TCS AWS Management Platform**
-Enterprise-grade full-stack platform (~35K lines TypeScript) — browser SSH terminal, EC2/S3/RDS/EKS dashboards, cost analysis, Azure AD SSO. → **80% ops reduction**
+Enterprise platform (~35K lines TypeScript) — browser SSH terminal, EC2 / S3 / RDS / EKS dashboards, cost analysis, Azure AD SSO → **80% ops reduction**
 
-**MonitorPlatform — SaaS**
-Self-hosted multi-tenant monitoring SaaS. Cross-platform agent (Linux/macOS/Windows) → real-time metrics via Redis + Socket.io, security scanning, vulnerability scoring, configurable alerts.`,
-      links: [
-        { label: 'Visit ServerPulse', url: 'https://serverpulse.in' },
-      ],
-      highlights: [],
+**Also at TCS:** CI/CD optimisation (**60% faster**), cost engine (**20% savings**), compliance automation (**100% score**), multi-cluster EKS (**99.9% uptime**).`,
+      links: [{ label: 'Visit ServerPulse', url: 'https://serverpulse.in' }],
     },
   },
 
@@ -129,29 +161,14 @@ Self-hosted multi-tenant monitoring SaaS. Cross-platform agent (Linux/macOS/Wind
     keywords: ['ai', 'ml', 'machine learning', 'artificial', 'bedrock', 'claude', 'llm', 'genai', 'rag', 'sagemaker', 'intelligent'],
     response: {
       title: 'AI & ML Work',
-      body: `Arshad builds at the intersection of **DevOps and Artificial Intelligence**:
+      body: `Arshad builds at the intersection of **DevOps and AI**:
 
-• **AI Cost Intelligence** — AWS Bedrock + Claude API to analyse spend patterns & generate NL recommendations → **35% additional cost reduction**
-• **Incident Response Bot** — LLM-powered bot (Claude + LangChain) integrated with PagerDuty/Slack → **70% MTTR reduction**
-• **Log Anomaly Detector** — AWS SageMaker (Random Cut Forest) to predict failures before impact → **90% failure prediction accuracy**
-• **RAG Knowledge Base** — Infrastructure runbooks via AWS Bedrock Knowledge Bases → **80% fewer ops queries**`,
-      highlights: [
-        { label: 'AWS Certified AI Practitioner', desc: 'Verified' },
-      ],
-    },
-  },
-
-  certifications: {
-    keywords: ['cert', 'certif', 'aws', 'terraform', 'hashicorp', 'qualification', 'credential', 'badge'],
-    response: {
-      title: 'Certifications',
-      body: `All certifications are **industry-verified**:`,
-      certs: [
-        { name: 'AWS Certified Solutions Architect – Associate', issuer: 'Amazon Web Services', color: '#b45309' },
-        { name: 'AWS Certified Cloud Practitioner',             issuer: 'Amazon Web Services', color: '#b45309' },
-        { name: 'HashiCorp Certified: Terraform Associate',     issuer: 'HashiCorp',            color: '#7c3aed' },
-        { name: 'AWS Certified AI Practitioner',               issuer: 'Amazon Web Services', color: '#1d4ed8' },
-      ],
+• **AI Cost Intelligence** — Bedrock + Claude analyse spend → **35% additional cost reduction**
+• **Incident Response Bot** — Claude + LangChain with PagerDuty / Slack → **70% MTTR reduction**
+• **Log Anomaly Detector** — SageMaker Random Cut Forest → **90% of failures predicted**
+• **RAG Knowledge Base** — Bedrock Knowledge Bases → **80% fewer ops queries**
+• **In his products** — local-LLM assistant in ServerPulse, Claude Cost Copilot in CloudLedger, AI → Terraform in Cloudwright, and Terminal Agent, an agentic AI platform for the shell`,
+      highlights: [{ label: 'AWS AI Practitioner', desc: 'Certified' }],
     },
   },
 
@@ -162,9 +179,7 @@ Self-hosted multi-tenant monitoring SaaS. Cross-platform agent (Linux/macOS/Wind
       body: `**B.Tech in Computer Science & Engineering**
 Guru Gobind Singh Educational Society's Technical Campus, Bokaro, Jharkhand
 2018 – 2022`,
-      highlights: [
-        { label: '8.64 / 10', desc: 'CGPA — top academic performance' },
-      ],
+      highlights: [{ label: '8.64 / 10', desc: 'CGPA' }],
     },
   },
 
@@ -172,12 +187,12 @@ Guru Gobind Singh Educational Society's Technical Campus, Bokaro, Jharkhand
     keywords: ['contact', 'email', 'phone', 'linkedin', 'github', 'reach', 'connect', 'message', 'call', 'hire'],
     response: {
       title: 'Contact Arshad',
-      body: `Arshad is **actively looking for opportunities** in DevOps, SRE, and Platform Engineering. Reach out through any channel below:`,
+      body: `Arshad is **actively looking for opportunities**. Reach out through any channel below:`,
       contacts: [
-        { icon: '✉', label: 'Email',    value: 'arshali471@gmail.com',                         url: 'mailto:arshali471@gmail.com' },
-        { icon: '💼', label: 'LinkedIn', value: 'md-arshad-ali-06279a1b2',                      url: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2' },
-        { icon: '{ }', label: 'GitHub',  value: 'github.com/arshali471',                        url: 'https://github.com/arshali471' },
-        { icon: '☎', label: 'Phone',    value: '+91 78708 31211',                               url: 'tel:+917870831211' },
+        { icon: '✉', label: 'Email',    value: 'arshali471@gmail.com',    url: 'mailto:arshali471@gmail.com' },
+        { icon: 'in', label: 'LinkedIn', value: 'md-arshad-ali-06279a1b2', url: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2' },
+        { icon: '{}', label: 'GitHub',   value: 'github.com/arshali471',   url: 'https://github.com/arshali471' },
+        { icon: '☎', label: 'Phone',    value: '+91 78708 31211',          url: 'tel:+917870831211' },
       ],
     },
   },
@@ -186,15 +201,10 @@ Guru Gobind Singh Educational Society's Technical Campus, Bokaro, Jharkhand
     keywords: ['resume', 'cv', 'curriculum vitae', 'cover letter', 'cover', 'download', 'pdf', 'document'],
     response: {
       title: 'Resume & Cover Letter',
-      body: `Arshad's resume and cover letter are ready to view and download as PDF.
-
-Click a link below — the page opens with a **"Save as PDF"** button at the top. Works in all browsers.`,
+      body: `Both open in a new tab with a **"Save as PDF"** button at the top. Works in all browsers.`,
       links: [
-        { label: 'View Resume & Save as PDF', url: '/resume.html' },
-        { label: 'View Cover Letter & Save as PDF', url: '/cover-letter.html' },
-      ],
-      highlights: [
-        { label: '1 page', desc: 'Concise, ATS-friendly resume' },
+        { label: 'View Resume',       url: asset('resume.html') },
+        { label: 'View Cover Letter', url: asset('cover-letter.html') },
       ],
     },
   },
@@ -204,266 +214,158 @@ Click a link below — the page opens with a **"Save as PDF"** button at the top
     response: {
       title: 'Key Achievements',
       body: `**Star Employee of the Month — TCS**
-Recognised for delivering critical infrastructure automation projects ahead of schedule with **zero production incidents**.
+Delivered critical infrastructure automation ahead of schedule with **zero production incidents**.
 
 **Cloud Cost Optimisation Leader — TCS**
-Led organisation-wide AWS cost optimisation saving **20% monthly spend** — recognised at division level for financial impact.`,
-      highlights: [],
+Led an organisation-wide AWS cost initiative saving **20% of monthly spend** — recognised at division level.
+
+**AWS Solutions Architect – Professional** — earned September 2026.`,
     },
   },
 };
 
-/* ── Greeting ─────────────────────────────────────────────── */
 const GREETING = {
-  title: `Hi! I'm Arshad's AI assistant 👋`,
-  body:  `Ask me anything about Arshad's experience, skills, projects, or how to contact him. I'm here to help recruiters find the right information quickly.`,
-  highlights: [],
+  title: `Hi! I'm Arshad's assistant 👋`,
+  body: `Ask me anything about Arshad's experience, **products**, certifications, skills, or how to reach him.`,
 };
 
 const QUICK_CHIPS = [
-  { label: '👤 Who is Arshad?',      query: 'Tell me about Arshad' },
-  { label: '🛠 Skills & Stack',       query: 'What are his skills?' },
-  { label: '💼 Experience',           query: 'Tell me about his work experience' },
-  { label: '🚀 Projects',             query: 'What projects has he built?' },
-  { label: '🤖 AI Work',              query: 'What AI and ML work has he done?' },
-  { label: '📜 Certifications',       query: 'What certifications does he have?' },
-  { label: '📄 Download Resume',      query: 'Download resume' },
-  { label: '✉ Cover Letter',         query: 'Download cover letter' },
-  { label: '📞 How to hire him?',     query: 'How to hire Arshad?' },
-  { label: '✅ Is he available?',     query: 'Is Arshad available and open to relocation?' },
+  { label: '👤 Who is Arshad?',     query: 'Tell me about Arshad' },
+  { label: '🚀 His products',       query: 'What products has he built?' },
+  { label: '📜 Certifications',     query: 'What certifications does he have?' },
+  { label: '💼 Experience',         query: 'Tell me about his work experience' },
+  { label: '🛠 Skills',             query: 'What are his skills?' },
+  { label: '🤖 AI work',            query: 'What AI and ML work has he done?' },
+  { label: '📄 Resume',             query: 'Download resume' },
+  { label: '📞 How to hire him?',   query: 'How to hire Arshad?' },
+  { label: '✅ Available?',         query: 'Is Arshad available and open to relocation?' },
 ];
 
 const FALLBACK = {
   title: 'Not sure about that',
-  body: `I can answer questions about Arshad's **skills, experience, projects, certifications, education, and how to contact him**. Try one of the quick questions below, or ask me something specific!`,
-  highlights: [],
+  body: `I can answer questions about Arshad's **products, skills, experience, certifications, education and contact details**. Try a quick question below.`,
 };
 
-/* ── Response matcher ─────────────────────────────────────── */
+/* Specific topics first; broad ones (availability, intro) last so they don't swallow everything */
+const MATCH_ORDER = [
+  'hire', 'resume', 'products', 'certifications', 'ai', 'experience', 'skills',
+  'projects', 'education', 'achievements', 'contact', 'availability', 'intro',
+];
+
+const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 function getResponse(input) {
   const lower = input.toLowerCase();
-  for (const key of Object.keys(KB)) {
-    const entry = KB[key];
-    // Sort longer keywords first so specific phrases beat single words
-    const sorted = [...entry.keywords].sort((a, b) => b.length - a.length);
-    if (sorted.some(kw => lower.includes(kw))) {
-      return entry.response;
-    }
+  for (const key of MATCH_ORDER) {
+    // Match at a word start so "ai" doesn't fire on "available" or "own" on "download"
+    if (KB[key].keywords.some(kw => new RegExp(`\\b${escapeRe(kw)}`).test(lower))) return KB[key].response;
   }
   return FALLBACK;
 }
 
-/* ── Render response body (bold + bullet) ─────────────────── */
+/* Renders **bold** and *italic* from static KB text */
 function FormattedText({ text }) {
-  const lines = text.split('\n');
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-      {lines.map((line, i) => {
-        if (!line.trim()) return <div key={i} style={{ height: '0.25rem' }} />;
-        const formatted = line.replace(/\*\*(.*?)\*\*/g, (_, m) =>
-          `<strong style="color:#111111;font-weight:700">${m}</strong>`
-        );
-        const isBullet = line.trimStart().startsWith('•');
-        return (
-          <p
-            key={i}
-            style={{
-              margin: 0,
-              paddingLeft: isBullet ? '0.1rem' : 0,
-              color: '#444444',
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '0.85rem',
-              lineHeight: 1.65,
-            }}
-            dangerouslySetInnerHTML={{ __html: formatted }}
-          />
-        );
+    <div className="space-y-1.5">
+      {text.split('\n').map((line, i) => {
+        if (!line.trim()) return <div key={i} className="h-1" />;
+        const html = line
+          .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-fg">$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em class="text-fg-dim not-italic">$1</em>');
+        return <p key={i} className="text-[13px] leading-relaxed text-fg-muted" dangerouslySetInnerHTML={{ __html: html }} />;
       })}
     </div>
   );
 }
 
-/* ── Bot message bubble ─────────────────────────────────────── */
-function BotMessage({ response, isGreeting }) {
-  if (!response) return null;
+function BotMessage({ response }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-      {/* Title */}
+    <div className="flex flex-col gap-2">
       {response.title && (
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            background: '#111111',
-            color: '#ffffff',
-            borderRadius: '9999px',
-            padding: '0.25rem 0.8rem',
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            letterSpacing: '0.04em',
-            fontFamily: 'Inter, sans-serif',
-            alignSelf: 'flex-start',
-          }}
-        >
-          <Sparkles size={11} strokeWidth={2} />
-          {response.title}
-        </div>
+        <span className="inline-flex items-center gap-1.5 self-start rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-[11px] font-semibold text-indigo-200">
+          <Sparkles size={11} /> {response.title}
+        </span>
       )}
-
-      {/* Body text */}
-      <div
-        style={{
-          background: '#f9f5f0',
-          border: '1px solid #ebe2d8',
-          borderRadius: '0 1rem 1rem 1rem',
-          padding: '0.9rem 1rem',
-        }}
-      >
+      <div className="rounded-2xl rounded-tl-sm border hairline bg-white/[0.03] p-3.5">
         <FormattedText text={response.body} />
 
-        {/* Highlights — key metric pills */}
         {response.highlights?.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.75rem' }}>
-            {response.highlights.map((h, i) => (
-              <div
-                key={i}
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid #ddd3c8',
-                  borderRadius: '0.75rem',
-                  padding: '0.4rem 0.75rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                <span style={{ fontFamily: 'Playfair Display, Georgia, serif', fontWeight: 700, fontSize: '1rem', color: '#111111', lineHeight: 1 }}>
-                  {h.label}
-                </span>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: '#888888' }}>
-                  {h.desc}
-                </span>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {response.highlights.map(h => (
+              <div key={h.label} className="flex items-center gap-2 rounded-xl border hairline bg-night-900 px-2.5 py-1.5">
+                <span className="font-display text-sm font-semibold text-fg">{h.label}</span>
+                <span className="text-[11px] text-fg-dim">{h.desc}</span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Tag groups — for skills */}
-        {response.tags?.map((group, gi) => (
-          <div key={gi} style={{ marginTop: '0.65rem' }}>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 700, color: '#888888', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.35rem' }}>
-              {group.group}
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
-              {group.items.map((item, ii) => (
-                <span key={ii} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', fontWeight: 500, padding: '0.2rem 0.6rem', borderRadius: '9999px', border: '1px solid #cccccc', color: '#444444', background: '#ffffff' }}>
-                  {item}
-                </span>
-              ))}
+        {response.tags?.map(group => (
+          <div key={group.group} className="mt-3">
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-fg-dim">{group.group}</p>
+            <div className="flex flex-wrap gap-1.5">
+              {group.items.map(item => <span key={item} className="chip">{item}</span>)}
             </div>
           </div>
         ))}
 
-        {/* Cert list */}
-        {response.certs?.map((cert, ci) => (
-          <div
-            key={ci}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              marginTop: '0.5rem',
-              background: '#ffffff',
-              border: '1px solid #e5e5e5',
-              borderRadius: '0.75rem',
-              padding: '0.5rem 0.75rem',
-            }}
-          >
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: cert.color, flexShrink: 0, display: 'inline-block' }} />
+        {response.certs?.map(cert => (
+          <div key={cert.name} className="mt-2 flex items-center gap-2.5 rounded-xl border hairline bg-night-900 px-3 py-2">
+            <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: cert.color }} />
             <div>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 600, color: '#111111', margin: 0 }}>{cert.name}</p>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', color: '#888888', margin: 0 }}>{cert.issuer}</p>
+              <p className="text-[12.5px] font-medium text-fg">{cert.name}</p>
+              <p className="text-[11px] text-fg-dim">{cert.issuer}</p>
             </div>
           </div>
         ))}
 
-        {/* Contact links */}
-        {response.contacts?.map((c, ci) => (
+        {response.contacts?.map(c => (
           <a
-            key={ci}
+            key={c.label}
             href={c.url}
             target={c.url.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              marginTop: '0.5rem',
-              background: '#ffffff',
-              border: '1px solid #e5e5e5',
-              borderRadius: '0.75rem',
-              padding: '0.5rem 0.75rem',
-              textDecoration: 'none',
-              transition: 'border-color 0.2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = '#111111'}
-            onMouseLeave={e => e.currentTarget.style.borderColor = '#e5e5e5'}
+            className="mt-2 flex items-center gap-2.5 rounded-xl border hairline bg-night-900 px-3 py-2 transition-colors hover:border-white/20"
           >
-            <span style={{ fontSize: '0.9rem', width: 20, textAlign: 'center', flexShrink: 0 }}>{c.icon}</span>
+            <span className="w-5 text-center font-mono text-xs text-fg-muted">{c.icon}</span>
             <div>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', color: '#888888', margin: 0 }}>{c.label}</p>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 600, color: '#111111', margin: 0 }}>{c.value}</p>
+              <p className="text-[11px] text-fg-dim">{c.label}</p>
+              <p className="text-[12.5px] font-medium text-fg">{c.value}</p>
             </div>
-            <ChevronRight size={14} color="#cccccc" style={{ marginLeft: 'auto', flexShrink: 0 }} />
+            <ChevronRight size={14} className="ml-auto text-fg-dim" />
           </a>
         ))}
 
-        {/* External links */}
-        {response.links?.map((l, li) => (
-          <a
-            key={li}
-            href={l.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              marginTop: '0.75rem',
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              color: '#059669',
-              textDecoration: 'none',
-              border: '1px solid #a7f3d0',
-              background: '#ecfdf5',
-              borderRadius: '9999px',
-              padding: '0.3rem 0.8rem',
-            }}
-          >
-            {l.label} ↗
-          </a>
-        ))}
+        {response.links?.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {response.links.map(l => (
+              <a
+                key={l.label}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200 hover:bg-emerald-400/20"
+              >
+                {l.label} ↗
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-/* ── Main ChatBot component ──────────────────────────────── */
 export default function RecruiterBot() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen]         = useState(false);
   const [messages, setMessages] = useState([]);
-  const [input, setInput]     = useState('');
-  const [typing, setTyping]   = useState(false);
-  const bottomRef             = useRef(null);
-  const inputRef              = useRef(null);
+  const [input, setInput]       = useState('');
+  const [typing, setTyping]     = useState(false);
+  const bottomRef               = useRef(null);
+  const inputRef                = useRef(null);
 
-  // Greet on first open
   useEffect(() => {
-    if (open && messages.length === 0) {
-      setMessages([{ role: 'bot', response: GREETING, isGreeting: true }]);
-    }
+    if (open && messages.length === 0) setMessages([{ role: 'bot', response: GREETING }]);
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
@@ -478,288 +380,94 @@ export default function RecruiterBot() {
     setMessages(prev => [...prev, { role: 'user', text: trimmed }]);
     setTyping(true);
     setTimeout(() => {
-      const response = getResponse(trimmed);
-      setMessages(prev => [...prev, { role: 'bot', response }]);
+      setMessages(prev => [...prev, { role: 'bot', response: getResponse(trimmed) }]);
       setTyping(false);
-    }, 750);
-  }
-
-  function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    }, 650);
   }
 
   return (
     <>
-      {/* ── Floating button ── */}
       <button
         onClick={() => setOpen(o => !o)}
-        aria-label="Open recruiter assistant"
-        style={{
-          position: 'fixed',
-          bottom: '1.75rem',
-          right: '1.75rem',
-          zIndex: 1000,
-          width: 56,
-          height: 56,
-          borderRadius: '50%',
-          background: '#111111',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 8px 30px rgba(0,0,0,0.22)',
-          transition: 'transform 0.2s, box-shadow 0.2s',
-        }}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.28)'; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.22)'; }}
+        aria-label={open ? 'Close recruiter assistant' : 'Open recruiter assistant'}
+        className="fixed bottom-5 right-5 z-[1000] flex h-14 w-14 items-center justify-center rounded-full text-night-950 shadow-[0_10px_40px_-6px_rgba(129,140,248,0.7)] transition-transform hover:scale-105 md:bottom-7 md:right-7"
+        style={{ background: 'linear-gradient(135deg, #c7d2fe 0%, #a5f3fc 50%, #bbf7d0 100%)' }}
       >
-        {open
-          ? <X size={22} color="#ffffff" strokeWidth={2} />
-          : <MessageCircle size={22} color="#ffffff" strokeWidth={2} />
-        }
-        {/* Pulse ring when closed */}
-        {!open && (
-          <span style={{
-            position: 'absolute', inset: -4, borderRadius: '50%',
-            border: '2px solid rgba(17,17,17,0.25)',
-            animation: 'botPulse 2s ease-out infinite',
-          }} />
-        )}
+        {open ? <X size={22} strokeWidth={2.2} /> : <MessageCircle size={22} strokeWidth={2.2} />}
+        {!open && <span className="absolute inset-0 animate-ping2 rounded-full bg-indigo-300/40" />}
       </button>
 
-      {/* ── Chat window ── */}
       <div
-        style={{
-          position: 'fixed',
-          bottom: '5.5rem',
-          right: '1.75rem',
-          zIndex: 999,
-          width: 'min(420px, calc(100vw - 2rem))',
-          height: 'min(580px, calc(100vh - 8rem))',
-          background: '#ffffff',
-          borderRadius: '1.25rem',
-          border: '1px solid #e5e5e5',
-          boxShadow: '0 24px 80px rgba(0,0,0,0.16)',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-          opacity: open ? 1 : 0,
-          transform: open ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.97)',
-          pointerEvents: open ? 'auto' : 'none',
-          transition: 'opacity 0.25s ease, transform 0.25s ease',
-          transformOrigin: 'bottom right',
-        }}
+        className={`fixed bottom-24 right-4 z-[999] flex h-[min(600px,calc(100vh-8rem))] w-[min(420px,calc(100vw-2rem))] origin-bottom-right flex-col overflow-hidden rounded-3xl border hairline bg-night-900/95 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-all duration-300 md:right-7 ${
+          open ? 'pointer-events-auto translate-y-0 scale-100 opacity-100' : 'pointer-events-none translate-y-4 scale-95 opacity-0'
+        }`}
+        role="dialog"
+        aria-label="Recruiter assistant"
       >
-        {/* Header */}
-        <div
-          style={{
-            background: '#111111',
-            padding: '1rem 1.25rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            flexShrink: 0,
-          }}
-        >
-          <div
-            style={{
-              width: 36, height: 36, borderRadius: '50%',
-              background: 'rgba(255,255,255,0.12)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <Sparkles size={16} color="#ffffff" strokeWidth={2} />
-          </div>
+        <div className="flex shrink-0 items-center gap-3 border-b hairline px-5 py-4">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-indigo-300 to-emerald-200 text-night-950">
+            <Sparkles size={16} />
+          </span>
           <div>
-            <p style={{ fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 700, fontSize: '0.95rem', color: '#ffffff', margin: 0 }}>
-              Arshad's Assistant
-            </p>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.55)', margin: 0 }}>
-              Ask me anything about Arshad
-            </p>
+            <p className="font-display text-[15px] font-semibold text-fg">Arshad's Assistant</p>
+            <p className="text-[11px] text-fg-dim">Ask me anything about Arshad</p>
           </div>
-          <div
-            style={{
-              marginLeft: 'auto',
-              display: 'flex', alignItems: 'center', gap: '0.35rem',
-              background: 'rgba(16,185,129,0.2)',
-              border: '1px solid rgba(16,185,129,0.4)',
-              borderRadius: '9999px',
-              padding: '0.2rem 0.6rem',
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, color: '#10b981' }}>Online</span>
-          </div>
+          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-0.5 text-[10.5px] font-semibold text-emerald-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Online
+          </span>
         </div>
 
-        {/* Messages */}
-        <div
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '1rem 1.1rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-          }}
-        >
+        <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-4">
           {messages.map((msg, i) => (
-            <div
-              key={i}
-              style={{
-                display: 'flex',
-                justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                opacity: 0,
-                animation: `fadeUp 0.3s ease ${i * 0.05}s forwards`,
-              }}
-            >
+            <div key={i} className={`flex animate-fadeUp opacity-0 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               {msg.role === 'user' ? (
-                <div
-                  style={{
-                    background: '#111111',
-                    color: '#ffffff',
-                    borderRadius: '1rem 1rem 0.25rem 1rem',
-                    padding: '0.6rem 0.9rem',
-                    maxWidth: '80%',
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '0.85rem',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {msg.text}
-                </div>
+                <div className="max-w-[80%] rounded-2xl rounded-br-sm bg-indigo-400/90 px-3.5 py-2 text-[13px] text-night-950">{msg.text}</div>
               ) : (
-                <div style={{ maxWidth: '92%' }}>
-                  <BotMessage response={msg.response} />
-                </div>
+                <div className="max-w-[94%]"><BotMessage response={msg.response} /></div>
               )}
             </div>
           ))}
-
-          {/* Typing indicator */}
           {typing && (
-            <div style={{ display: 'flex', gap: 5, padding: '0.7rem 1rem', background: '#f9f5f0', border: '1px solid #ebe2d8', borderRadius: '0 1rem 1rem 1rem', alignSelf: 'flex-start', width: 'fit-content' }}>
-              {[0,1,2].map(i => (
-                <span key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: '#aaaaaa', display: 'inline-block', animation: `typingDot 1.2s ease-in-out ${i * 0.2}s infinite` }} />
+            <div className="flex w-fit gap-1.5 rounded-2xl rounded-tl-sm border hairline bg-white/[0.03] px-4 py-3">
+              {[0, 1, 2].map(i => (
+                <span key={i} className="h-1.5 w-1.5 animate-bounce rounded-full bg-fg-dim" style={{ animationDelay: `${i * 0.15}s` }} />
               ))}
             </div>
           )}
-
           <div ref={bottomRef} />
         </div>
 
-        {/* Quick chips — always visible */}
-        <div
-          className="chips-strip"
-          style={{
-            borderTop: '1px solid #f0f0f0',
-            padding: '0.55rem 0.9rem',
-            overflowX: 'auto',
-            flexShrink: 0,
-            background: '#fafafa',
-            display: 'flex',
-            gap: '0.4rem',
-            scrollbarWidth: 'none',
-          }}
-        >
-          {QUICK_CHIPS.map((chip, i) => (
+        <div className="flex shrink-0 gap-1.5 overflow-x-auto border-t hairline px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {QUICK_CHIPS.map(chip => (
             <button
-              key={i}
+              key={chip.label}
               onClick={() => send(chip.query)}
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '0.72rem',
-                fontWeight: 500,
-                padding: '0.28rem 0.7rem',
-                borderRadius: '9999px',
-                border: '1px solid #e5e5e5',
-                background: '#ffffff',
-                color: '#444444',
-                cursor: 'pointer',
-                transition: 'all 0.15s',
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#111111'; e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.borderColor = '#111111'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#ffffff'; e.currentTarget.style.color = '#444444'; e.currentTarget.style.borderColor = '#e5e5e5'; }}
+              className="shrink-0 whitespace-nowrap rounded-full border hairline bg-white/[0.03] px-3 py-1 text-[11.5px] text-fg-muted transition-colors hover:border-white/20 hover:text-fg"
             >
               {chip.label}
             </button>
           ))}
         </div>
 
-        {/* Input */}
-        <div
-          style={{
-            padding: '0.65rem 1rem',
-            borderTop: '1px solid #e5e5e5',
-            display: 'flex',
-            gap: '0.5rem',
-            flexShrink: 0,
-            background: '#ffffff',
-          }}
-        >
+        <div className="flex shrink-0 gap-2 border-t hairline px-3 py-3">
           <input
             ref={inputRef}
             value={input}
             onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKey}
-            placeholder="Ask about skills, experience, projects…"
-            style={{
-              flex: 1,
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '0.85rem',
-              padding: '0.6rem 0.9rem',
-              borderRadius: '9999px',
-              border: '1px solid #e5e5e5',
-              outline: 'none',
-              background: '#f9f5f0',
-              color: '#111111',
-              transition: 'border-color 0.2s',
-            }}
-            onFocus={e => e.target.style.borderColor = '#111111'}
-            onBlur={e => e.target.style.borderColor = '#e5e5e5'}
+            onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }}
+            placeholder="Ask about products, certs, experience…"
+            className="flex-1 rounded-full border hairline bg-white/[0.04] px-4 py-2 text-[13px] text-fg placeholder:text-fg-dim focus:border-indigo-400/50 focus:outline-none"
           />
           <button
             onClick={() => send()}
-            style={{
-              width: 38,
-              height: 38,
-              borderRadius: '50%',
-              background: input.trim() ? '#111111' : '#e5e5e5',
-              border: 'none',
-              cursor: input.trim() ? 'pointer' : 'default',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s',
-              flexShrink: 0,
-            }}
+            disabled={!input.trim()}
+            aria-label="Send"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-300 text-night-950 transition-opacity disabled:opacity-30"
           >
-            <Send size={15} color={input.trim() ? '#ffffff' : '#aaaaaa'} strokeWidth={2} />
+            <Send size={15} />
           </button>
         </div>
       </div>
-
-      <style>{`
-        .chips-strip::-webkit-scrollbar { display: none; }
-        @keyframes botPulse {
-          0%   { transform: scale(1);   opacity: 0.6; }
-          70%  { transform: scale(1.5); opacity: 0; }
-          100% { transform: scale(1.5); opacity: 0; }
-        }
-        @keyframes typingDot {
-          0%, 80%, 100% { transform: translateY(0);    opacity: 0.4; }
-          40%           { transform: translateY(-5px); opacity: 1; }
-        }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </>
   );
 }

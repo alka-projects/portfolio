@@ -1,46 +1,50 @@
 import { useEffect, useState } from 'react';
 import Navbar       from './components/Navbar';
-import { LogoMark }    from './components/Logo';
-import RecruiterBot   from './components/RecruiterBot';
+import { LogoMark } from './components/Logo';
+import RecruiterBot from './components/RecruiterBot';
 import TerminalHero from './components/TerminalHero';
-import MetricsBar   from './components/MetricsBar';
-import CloudSkills  from './components/CloudSkills';
+import MetricsBar, { TechMarquee } from './components/MetricsBar';
+import Products     from './components/Products';
+import CertBadges   from './components/CertBadges';
 import PipelineExp  from './components/PipelineExp';
+import CloudSkills  from './components/CloudSkills';
 import Projects     from './components/Projects';
 import AIProjects   from './components/AIProjects';
-import CertBadges   from './components/CertBadges';
-import Achievements from './components/Achievements';
-import Education    from './components/Education';
 import Journey      from './components/Journey';
+import Achievements from './components/Achievements';
 import Contact      from './components/Contact';
+import { GithubIcon, LinkedinIcon, SOCIALS } from './components/ui';
 
 function Loader() {
   return (
-    <div className="min-h-screen bg-cream-100 flex flex-col items-center justify-center gap-4">
-      <LogoMark size={40} variant="dark" />
-      <div className="flex gap-1.5">
-        {[0, 1, 2].map(i => (
-          <div
-            key={i}
-            className="w-1.5 h-1.5 rounded-full bg-ink-300"
-            style={{ animation: `bounce 0.9s ease-in-out ${i * 0.15}s infinite` }}
-          />
-        ))}
+    <div className="flex min-h-screen flex-col items-center justify-center gap-5 bg-night-950">
+      <LogoMark size={44} />
+      <div className="h-0.5 w-28 overflow-hidden rounded-full bg-white/5">
+        <div className="h-full w-1/2 animate-shimmer rounded-full bg-[linear-gradient(90deg,transparent,#a5b4fc,#6ee7b7,transparent)] bg-[length:200%_100%]" />
       </div>
-      <style>{`@keyframes bounce{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(-6px);opacity:1}}`}</style>
     </div>
   );
 }
 
-/* ── Section wrappers alternate between white and cream ── */
-function Section({ children, bg = 'white', full = false }) {
-  const background = bg === 'cream' ? '#f9f5f0' : '#ffffff';
+function Footer({ profile }) {
   return (
-    <div style={{ background }}>
-      {full ? children : (
-        <div className="max-w-6xl mx-auto px-5 md:px-8">{children}</div>
-      )}
-    </div>
+    <footer className="border-t hairline">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 md:flex-row md:px-8">
+        <div className="flex items-center gap-3">
+          <LogoMark size={30} />
+          <div className="leading-tight">
+            <p className="font-display text-sm font-semibold text-fg">{profile.name}</p>
+            <p className="text-xs text-fg-dim">Cloud & DevOps Engineer · AWS SA Professional · {profile.location}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1 text-fg-dim">
+          <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-lg p-2 hover:bg-white/5 hover:text-fg"><GithubIcon size={17} /></a>
+          <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-lg p-2 hover:bg-white/5 hover:text-fg"><LinkedinIcon size={17} /></a>
+          <a href="https://serverpulse.in" target="_blank" rel="noopener noreferrer" className="ml-2 font-mono text-xs hover:text-fg">serverpulse.in ↗</a>
+        </div>
+        <p className="font-mono text-[11px] text-fg-dim">© {new Date().getFullYear()} · React · Tailwind · Vite</p>
+      </div>
+    </footer>
   );
 }
 
@@ -57,104 +61,26 @@ export default function App() {
   if (!data) return <Loader />;
 
   return (
-    <div className="min-h-screen text-ink-900 relative overflow-x-hidden">
+    <div className="relative min-h-screen bg-night-950 text-fg">
       <Navbar />
-
-      {/* Hero */}
-      <TerminalHero profile={data.profile} />
-
-      {/* Metrics strip — white, full bleed */}
-      <Section bg="white">
-        <MetricsBar metrics={data.metrics} />
-      </Section>
-
-      {/* Skills — cream */}
-      <Section bg="cream">
-        <CloudSkills skills={data.skills} />
-      </Section>
-
-      {/* Experience — white */}
-      <Section bg="white">
-        <PipelineExp experience={data.experience} />
-      </Section>
-
-      {/* Projects — cream */}
-      <Section bg="cream">
-        <Projects projects={data.projects} />
-      </Section>
-
-      {/* AI Projects — subtle purple-cream tint */}
-      <div style={{ background: 'linear-gradient(160deg, #f8f5ff 0%, #f9f5f0 100%)' }}>
-        <div className="max-w-6xl mx-auto px-5 md:px-8">
-          <AIProjects aiProjects={data.aiProjects} />
+      <main>
+        <TerminalHero profile={data.profile} products={data.products} />
+        <TechMarquee />
+        <div className="pt-16 md:pt-20">
+          <MetricsBar metrics={data.metrics} />
         </div>
-      </div>
-
-      {/* Certifications — white */}
-      <Section bg="white">
+        <Products products={data.products} />
         <CertBadges certs={data.certifications} />
-      </Section>
-
-      {/* Achievements — cream */}
-      <Section bg="cream">
-        <Achievements achievements={data.achievements} />
-      </Section>
-
-      {/* Education — white */}
-      <Section bg="white">
-        <Education education={data.education} />
-      </Section>
-
-      {/* Journey / Story — alternating (cream overall) with full-width photo sections */}
-      <div style={{ background: '#f9f5f0' }}>
-        <div className="max-w-6xl mx-auto px-5 md:px-8">
-          {data.journey && <Journey journey={data.journey} />}
-        </div>
-      </div>
-
-      {/* Contact — white */}
-      <Section bg="white">
+        <PipelineExp experience={data.experience} />
+        <CloudSkills skills={data.skills} />
+        <Projects projects={data.projects} />
+        <AIProjects aiProjects={data.aiProjects} />
+        <Journey journey={data.journey} />
+        <Achievements achievements={data.achievements} education={data.education} />
         <Contact profile={data.profile} />
-      </Section>
-
-      {/* Recruiter AI Assistant */}
+      </main>
+      <Footer profile={data.profile} />
       <RecruiterBot />
-
-      {/* Footer */}
-      <footer className="border-t border-ink-100 py-12" style={{ background: '#111111' }}>
-        <div className="max-w-6xl mx-auto px-5 md:px-8 text-center">
-          <div className="flex justify-center mb-4">
-            <LogoMark size={34} variant="light" />
-          </div>
-          <p className="font-heading font-semibold mb-1" style={{ color: '#ffffff' }}>Md Arshad Ali</p>
-          <p className="text-xs mb-6" style={{ color: '#666666', fontFamily: 'Inter, sans-serif' }}>
-            Cloud & DevOps Engineer · Delhi, India
-          </p>
-          <div className="flex justify-center gap-8 mb-6">
-            {[
-              { label: 'Email', href: `mailto:${data.profile.contact.email}` },
-              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2', external: true },
-              { label: 'GitHub', href: `https://${data.profile.contact.github}`, external: true },
-            ].map(l => (
-              <a
-                key={l.label}
-                href={l.href}
-                target={l.external ? '_blank' : undefined}
-                rel={l.external ? 'noopener noreferrer' : undefined}
-                className="text-xs transition-colors"
-                style={{ color: '#666666', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
-                onMouseLeave={e => e.currentTarget.style.color = '#666666'}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-          <p className="text-xs" style={{ color: '#444444', fontFamily: 'Inter, sans-serif' }}>
-            © 2025 Md Arshad Ali · Built with React, Tailwind & Vite
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

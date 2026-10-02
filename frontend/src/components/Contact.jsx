@@ -1,183 +1,84 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Mail, ExternalLink, Code2, Phone, MapPin, CalendarDays, CheckCircle2, Target } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Download, FileText, ArrowUpRight, Copy, Check } from 'lucide-react';
+import { Reveal, LiveDot, GithubIcon, LinkedinIcon, SOCIALS, asset } from './ui';
 
-const QUICK_FACTS = [
-  { label: 'Location',     value: 'Delhi, India',             Icon: MapPin },
-  { label: 'Experience',   value: '3+ Years',                 Icon: CalendarDays },
-  { label: 'Availability', value: 'Open to Roles',            Icon: CheckCircle2 },
-  { label: 'Focus',        value: 'DevOps · SRE · Platform',  Icon: Target },
-];
-
-const CONTACT_LINKS = [
-  { href: 'mailto:arshali471@gmail.com',                          Icon: Mail,     label: 'Email',    value: 'arshali471@gmail.com' },
-  { href: 'https://www.linkedin.com/in/md-arshad-ali-06279a1b2', Icon: ExternalLink, label: 'LinkedIn', value: 'md-arshad-ali-06279a1b2', external: true },
-  { href: 'https://github.com/arshali471',                        Icon: Code2,       label: 'GitHub',   value: 'github.com/arshali471',   external: true },
-  { href: 'tel:+917870831211',                                    Icon: Phone,    label: 'Phone',    value: '+91 78708 31211' },
+const LINKS = [
+  { href: SOCIALS.linkedin, Icon: LinkedinIcon, label: 'LinkedIn', value: 'md-arshad-ali-06279a1b2', external: true },
+  { href: SOCIALS.github,   Icon: GithubIcon,   label: 'GitHub',   value: 'github.com/arshali471',   external: true },
+  { href: SOCIALS.phone,    Icon: Phone,        label: 'Phone',    value: '+91 78708 31211' },
+  { href: null,             Icon: MapPin,       label: 'Based in', value: 'Delhi, India · open to relocation & remote' },
 ];
 
 export default function Contact({ profile }) {
-  const [ref, visible] = useScrollReveal(0.1);
+  const [copied, setCopied] = useState(false);
+  const email = profile.contact.email;
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch { /* clipboard blocked */ }
+  };
 
   return (
-    <section id="contact" className="py-20">
-      <div className="mb-16">
-        <p className="eyebrow">Contact</p>
-        <h2 className="font-heading mt-2" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#111111' }}>
-          Let's Work Together
-        </h2>
-        <p style={{ color: '#888888', fontFamily: 'Inter, sans-serif', fontSize: '1.05rem', marginTop: '0.5rem' }}>
-          Open to DevOps, SRE, and Platform Engineering opportunities
-        </p>
-      </div>
+    <section id="contact" className="relative py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[32px] border hairline bg-night-850 p-7 md:p-14">
+            <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
+            <div className="pointer-events-none absolute -left-20 -top-24 h-80 w-80 rounded-full bg-indigo-500/25 blur-[110px]" />
+            <div className="pointer-events-none absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-emerald-400/15 blur-[110px]" />
 
-      <div
-        ref={ref}
-        className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(25px)',
-          transition: 'opacity 0.7s ease, transform 0.7s ease',
-        }}
-      >
-        {/* LEFT — portrait photo */}
-        <div className="relative">
-          <div
-            className="overflow-hidden rounded-2xl w-full"
-            style={{
-              height: 'clamp(380px, 50vw, 520px)',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.10)',
-              border: '1px solid #ebe2d8',
-            }}
-          >
-            <img
-              src={import.meta.env.BASE_URL + 'image.png'}
-              alt="Arshad Ali"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-            />
-            <div
-              style={{
-                position: 'absolute', bottom: 16, left: 16,
-                background: 'rgba(0,0,0,0.40)',
-                backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.18)',
-                borderRadius: '9999px', padding: '0.3rem 1rem',
-              }}
-            >
-              <p style={{ fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', fontFamily: 'Inter, sans-serif' }}>
-                Available · Delhi, India
-              </p>
-            </div>
-          </div>
-
-          {/* Availability badge */}
-          <div
-            className="absolute -bottom-5 -right-2 md:-right-5 bg-white rounded-2xl px-5 py-4 shadow-lg"
-            style={{ border: '1px solid #a7f3d0' }}
-          >
-            <div className="flex items-center gap-2.5">
-              <CheckCircle2 size={18} color="#10b981" strokeWidth={2} />
+            <div className="relative grid gap-12 lg:grid-cols-[1.2fr_1fr]">
               <div>
-                <p className="text-sm font-semibold" style={{ color: '#059669', fontFamily: 'Inter, sans-serif' }}>Open to Work</p>
-                <p className="text-xs" style={{ color: '#34d399', fontFamily: 'Inter, sans-serif' }}>DevOps · SRE · Platform</p>
+                <p className="eyebrow"><span className="text-fg-muted">09</span><span className="h-px w-6 bg-white/15" />Contact</p>
+                <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-fg md:text-6xl">
+                  Let's build something <span className="text-gradient">reliable.</span>
+                </h2>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-fg-muted">
+                  Open to Cloud, DevOps, SRE, Platform Engineering and Solutions Architect roles — in India or abroad,
+                  on-site or remote. I usually reply within 24 hours.
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <a href={`mailto:${email}`} className="btn-primary"><Mail size={16} /> {email}</a>
+                  <button onClick={copy} className="btn-ghost" aria-label="Copy email address">
+                    {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? 'Copied' : 'Copy'}
+                  </button>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a href={asset('resume.html')} target="_blank" rel="noopener noreferrer" className="btn-ghost"><Download size={15} /> Resume</a>
+                  <a href={asset('cover-letter.html')} target="_blank" rel="noopener noreferrer" className="btn-ghost"><FileText size={15} /> Cover letter</a>
+                </div>
+
+                <p className="mt-8 inline-flex items-center gap-2 text-sm text-emerald-300"><LiveDot /> Available for interviews</p>
+              </div>
+
+              <div className="grid content-start gap-3">
+                {LINKS.map(({ href, Icon, label, value, external }) => {
+                  const Tag = href ? 'a' : 'div';
+                  return (
+                    <Tag
+                      key={label}
+                      href={href || undefined}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                      className={`glass group flex items-center gap-4 rounded-2xl p-4 transition-colors ${href ? 'hover:border-white/20 hover:bg-white/[0.06]' : ''}`}
+                    >
+                      <span className="icon-tile h-11 w-11 text-fg-muted group-hover:text-fg"><Icon size={18} /></span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-xs text-fg-dim">{label}</span>
+                        <span className="block truncate text-sm font-medium text-fg">{value}</span>
+                      </span>
+                      {href && <ArrowUpRight size={16} className="text-fg-dim transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />}
+                    </Tag>
+                  );
+                })}
               </div>
             </div>
           </div>
-        </div>
-
-        {/* RIGHT */}
-        <div className="space-y-5">
-          {/* Quick facts */}
-          <div className="grid grid-cols-2 gap-3">
-            {QUICK_FACTS.map(({ label, value, Icon }) => (
-              <div key={label} className="card-cream p-4 rounded-2xl">
-                <Icon size={18} color="#888888" strokeWidth={1.6} style={{ marginBottom: 8 }} />
-                <p className="text-xs mb-0.5" style={{ color: '#888888', fontFamily: 'Inter, sans-serif' }}>{label}</p>
-                <p className="text-sm font-semibold" style={{ color: '#111111', fontFamily: 'Inter, sans-serif' }}>{value}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Contact links */}
-          <div className="card space-y-4">
-            {CONTACT_LINKS.map(link => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-3 group"
-                style={{ textDecoration: 'none' }}
-              >
-                <div
-                  className="flex items-center justify-center rounded-xl shrink-0 transition-colors"
-                  style={{ width: 40, height: 40, background: '#f5f5f5', border: '1px solid #e5e5e5' }}
-                >
-                  <link.Icon size={16} color="#666666" strokeWidth={1.8} />
-                </div>
-                <div>
-                  <p className="text-xs" style={{ color: '#888888', fontFamily: 'Inter, sans-serif' }}>{link.label}</p>
-                  <p className="text-sm font-medium" style={{ color: '#444444', fontFamily: 'Inter, sans-serif' }}>{link.value}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="rounded-2xl p-6 text-center" style={{ background: '#111111' }}>
-            <p className="text-sm mb-4" style={{ color: '#aaaaaa', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
-              Got an interesting role or project?<br />I'd love to hear about it.
-            </p>
-            <a
-              href={`mailto:${profile.contact.email}`}
-              className="btn-primary inline-flex items-center gap-2"
-              style={{ background: '#ffffff', color: '#111111' }}
-            >
-              <Mail size={15} strokeWidth={2} />
-              Send me an email
-            </a>
-            <p className="text-xs mt-4" style={{ color: '#555555', fontFamily: 'Inter, sans-serif' }}>
-              I typically respond within 24 hours
-            </p>
-          </div>
-
-          {/* Download row */}
-          <div className="flex gap-3">
-            <a
-              href="/resume.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 rounded-2xl py-3 text-sm font-semibold transition-colors"
-              style={{
-                background: '#f9f5f0',
-                border: '1px solid #e8dfd6',
-                color: '#111111',
-                textDecoration: 'none',
-                fontFamily: 'Inter, sans-serif',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#111111'; e.currentTarget.style.color = '#ffffff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#f9f5f0'; e.currentTarget.style.color = '#111111'; }}
-            >
-              ↓ Resume
-            </a>
-            <a
-              href="/cover-letter.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 rounded-2xl py-3 text-sm font-semibold transition-colors"
-              style={{
-                background: '#f9f5f0',
-                border: '1px solid #e8dfd6',
-                color: '#111111',
-                textDecoration: 'none',
-                fontFamily: 'Inter, sans-serif',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#111111'; e.currentTarget.style.color = '#ffffff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#f9f5f0'; e.currentTarget.style.color = '#111111'; }}
-            >
-              ↓ Cover Letter
-            </a>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

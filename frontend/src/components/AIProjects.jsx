@@ -1,94 +1,44 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Bot, Brain, Search, Lightbulb, ArrowUpRight } from 'lucide-react';
+import { Bot, Brain, Search, Lightbulb, Sparkles } from 'lucide-react';
+import { Reveal, SectionHeader, SpotlightCard } from './ui';
 
-const BADGE_STYLES = {
-  GenAI: { bg: '#f5f3ff', border: '#c4b5fd', color: '#7c3aed' },
-  LLM:   { bg: '#ecfeff', border: '#a5f3fc', color: '#0891b2' },
-  ML:    { bg: '#eff6ff', border: '#bfdbfe', color: '#1d4ed8' },
-  RAG:   { bg: '#fdf4ff', border: '#e9d5ff', color: '#9333ea' },
-};
-
-const AI_ICONS = { 1: Bot, 2: Brain, 3: Search, 4: Lightbulb };
-
-function AIProjectCard({ project, index, visible }) {
-  const badge = BADGE_STYLES[project.badge] || BADGE_STYLES.GenAI;
-  const Icon  = AI_ICONS[project.id] || Bot;
-
-  return (
-    <div
-      className="card flex flex-col"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(25px)',
-        transition: `opacity 0.5s ease ${index * 0.11}s, transform 0.5s ease ${index * 0.11}s`,
-      }}
-    >
-      <div className="flex items-start justify-between mb-4">
-        <div
-          className="flex items-center justify-center rounded-xl"
-          style={{ width: 44, height: 44, background: badge.bg, border: `1px solid ${badge.border}`, flexShrink: 0 }}
-        >
-          <Icon size={20} color={badge.color} strokeWidth={1.6} />
-        </div>
-        <span
-          className="text-xs font-semibold px-2.5 py-1 rounded-full"
-          style={{
-            background: badge.bg,
-            border: `1px solid ${badge.border}`,
-            color: badge.color,
-            fontFamily: 'Inter, sans-serif',
-            letterSpacing: '0.06em',
-          }}
-        >
-          {project.badge}
-        </span>
-      </div>
-
-      <h3 className="font-heading text-lg mb-2" style={{ color: '#111111' }}>
-        {project.name}
-      </h3>
-
-      <p className="text-sm mb-4 flex-1" style={{ color: '#666666', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {project.tech.map((t, i) => (
-          <span key={i} className="tag tag-purple">{t}</span>
-        ))}
-      </div>
-
-      <div className="pt-4 border-t border-ink-100">
-        <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#888888', fontFamily: 'Inter, sans-serif' }}>
-          Impact
-        </p>
-        <p className="text-sm font-semibold" style={{ color: '#7c3aed', fontFamily: 'Inter, sans-serif' }}>
-          {project.impact}
-        </p>
-      </div>
-    </div>
-  );
-}
+const ICONS = { bot: Bot, brain: Brain, search: Search, lightbulb: Lightbulb };
 
 export default function AIProjects({ aiProjects }) {
-  const [ref, visible] = useScrollReveal(0.1);
-
   return (
-    <section id="ai" ref={ref} className="py-20">
-      <div className="mb-12">
-        <p className="eyebrow" style={{ color: '#7c3aed' }}>AI & Machine Learning</p>
-        <h2 className="font-heading" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#111111' }}>
-          Where DevOps Meets AI
-        </h2>
-        <p className="mt-2" style={{ color: '#888888', fontFamily: 'Inter, sans-serif', fontSize: '1rem' }}>
-          Built with AWS Bedrock, Anthropic Claude API, and SageMaker
-        </p>
-      </div>
+    <section id="ai" className="relative overflow-hidden py-20 md:py-28">
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[480px] w-[760px] -translate-x-1/2 rounded-full bg-violet-600/[0.12] blur-[140px]" />
 
-      <div className="grid md:grid-cols-2 gap-5">
-        {aiProjects.map((project, i) => (
-          <AIProjectCard key={project.id} project={project} index={i} visible={visible} />
-        ))}
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <SectionHeader
+          index="06"
+          eyebrow="AI × DevOps"
+          title={<>Where infrastructure <span className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-indigo-200 bg-clip-text text-transparent">starts to think.</span></>}
+          subtitle="GenAI and ML built into operations — Bedrock, Claude, SageMaker and RAG applied to cost, incidents and knowledge."
+        />
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {aiProjects.map((p, i) => {
+            const Icon = ICONS[p.icon] || Sparkles;
+            return (
+              <Reveal key={p.id} delay={(i % 2) * 90}>
+                <SpotlightCard color="violet" className="flex h-full flex-col p-6 md:p-7">
+                  <div className="flex items-center justify-between">
+                    <span className="icon-tile h-11 w-11 border-violet-400/25 bg-violet-400/10 text-violet-200"><Icon size={19} /></span>
+                    <span className="chip !border-violet-400/30 !bg-violet-400/10 !text-violet-200">{p.badge}</span>
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-semibold text-fg">{p.name}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-fg-muted">{p.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {p.tech.map(t => <span key={t} className="chip">{t}</span>)}
+                  </div>
+                  <p className="mt-5 flex items-start gap-2 border-t hairline pt-4 text-sm font-medium text-violet-200">
+                    <Sparkles size={15} className="mt-0.5 shrink-0" /> {p.impact}
+                  </p>
+                </SpotlightCard>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
