@@ -98,7 +98,7 @@ At **Tata Consultancy Services (TCS)** he manages **20+ AWS accounts and 2,000+ 
       body: `**5 industry certifications**, led by AWS's top architecture credential:`,
       certs: [
         { name: 'AWS Certified Solutions Architect – Professional', issuer: 'Amazon Web Services · Sep 2026', color: '#fbbf24' },
-        { name: 'AWS Certified Solutions Architect – Associate',    issuer: 'Amazon Web Services',            color: '#fbbf24' },
+        { name: 'AWS Certified Solutions Architect – Associate',    issuer: 'Amazon Web Services · Jun 2026', color: '#fbbf24' },
         { name: 'AWS Certified AI Practitioner',                    issuer: 'Amazon Web Services',            color: '#a78bfa' },
         { name: 'AWS Certified Cloud Practitioner',                 issuer: 'Amazon Web Services',            color: '#38bdf8' },
         { name: 'HashiCorp Certified: Terraform Associate',         issuer: 'HashiCorp',                      color: '#a78bfa' },

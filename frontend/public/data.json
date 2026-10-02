@@ -551,6 +551,10 @@
       "short": "Solutions Architect",
       "level": "Associate",
       "issuer": "Amazon Web Services",
+      "issued": "June 20, 2026",
+      "expires": "September 13, 2029",
+      "validationNumber": "Z2FDL1EC4BFQQCSD",
+      "verifyUrl": "https://aws.amazon.com/verification",
       "color": "amber"
     },
     {

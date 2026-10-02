@@ -25,6 +25,9 @@ function HexBadge({ color = 'amber', label, size = 64, big = false }) {
 
 const LEVEL_LABEL = { Professional: 'PRO', Associate: 'ASC', Foundational: 'FND' };
 
+// "June 20, 2026" -> "Jun 2026"
+const shortDate = d => d.replace(/^(\w{3})\w*\s+\d+,\s*/, '$1 ');
+
 function FeaturedCert({ cert }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
@@ -125,6 +128,25 @@ export default function CertBadges({ certs }) {
                   <p className="font-display text-[17px] font-semibold leading-snug text-fg">{c.name}</p>
                   <p className="mt-1 text-xs" style={{ color: accent(c.color).hex }}>{c.issuer}</p>
                 </div>
+                {c.issued && (
+                  <div className="mt-auto flex items-end justify-between gap-2 border-t border-white/5 pt-3">
+                    <p className="font-mono text-[11px] leading-relaxed text-fg-muted">
+                      Issued {shortDate(c.issued)}
+                      {c.expires && <><br />Valid to {shortDate(c.expires)}</>}
+                    </p>
+                    {c.verifyUrl && (
+                      <a
+                        href={c.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={c.validationNumber ? `Validation number ${c.validationNumber}` : undefined}
+                        className="inline-flex items-center gap-0.5 text-[11px] font-medium text-fg-muted transition hover:text-fg"
+                      >
+                        Verify <ArrowUpRight size={12} />
+                      </a>
+                    )}
+                  </div>
+                )}
               </SpotlightCard>
             </Reveal>
           ))}
